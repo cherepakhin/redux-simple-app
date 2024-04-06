@@ -68,3 +68,36 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Store хранит все редусеры:
+
+import { createStore } from 'redux';
+import reducer from "./reducer";
+
+const store = createStore(
+reducer,
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;
+
+а каждый редусер имеет свой state:
+
+let lastId = 0;
+
+export default function reducer(state = [], action) {
+switch (action.type) {
+case actions.TASK_ADD:
+    return [...state, {
+                       id: ++lastId,
+                       title: action.payload.title,
+                       completed: false,
+                      }
+           ];
+
+    case actions.TASK_REMOVE:
+      return state.filter(task => action.payload.id !== task.id);
+
+    default:
+      return state;
+}
