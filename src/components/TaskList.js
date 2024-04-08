@@ -8,9 +8,13 @@ const TaskList = ({ tasks }) => {
     return (
       <ListGroup>
         {
-          tasks.map(task =>
-            <Task key={task.id} task={task} />
-          )
+          tasks.map(task => <Task key={task.id} task={task} />)
+// with console.log:
+//          tasks.map(task => {
+//            console.log("task:");
+//            console.log(task);
+//            return <Task key={task.id} task={task} />
+//          })
         }
       </ListGroup>
     )

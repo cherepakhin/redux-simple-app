@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 import * as actions from "../store/actions";
 import { useDispatch } from "react-redux";
+import * as actionTypes from '../store/actionTypes';
 
 const AddNewTask = () => {
-  const [taskTitle, setTaskTitle] = useState('');
+// Вызовите useState на верхнем уровне вашего компонента, чтобы объявить переменную состояния.
+  const [taskTitle, setTaskTitle] = useState('DEFAULT VALUE FOR taskTitle'); // или ''
   const dispatch = useDispatch();
 
   const handleTaskTitleChange = (e) => {
@@ -12,9 +14,17 @@ const AddNewTask = () => {
   }
 
   const handleTaskSubmit = () => {
-    dispatch(actions.addTask({
-      title: taskTitle
-    }));
+// Variant 1. WORKED!
+//    dispatch(actions.addTask({
+//      title: taskTitle
+//    }));
+// Variant 2. WORKED!
+    var addTaskAction = actions.addTaskAction({ title: taskTitle});
+// actionAddTask:
+//   type: actions.TASK_ADD,
+//   payload: taskTitle
+
+    dispatch(addTaskAction);
     setTaskTitle('');
   }
 
