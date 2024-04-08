@@ -7,6 +7,11 @@ const Task = ({ task }) => {
   const { id, title, completed } = task;
   const dispatch = useDispatch();
 
+  const handleDeleteTask = (id) => {
+    console.log("delete task id="+id);
+    dispatch(removeTaskAction(id));
+  }
+
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
       <Form.Check
@@ -17,7 +22,7 @@ const Task = ({ task }) => {
         onChange={ () => dispatch(toggleTaskAction(id)) }
       />
       <div className="list-group-item-actions">
-        <span onClick={() => dispatch(removeTaskAction(id))}>Удалить</span>
+        <span onClick={() => handleDeleteTask(id)}>Удалить</span>
       </div>
     </ListGroup.Item>
   )
