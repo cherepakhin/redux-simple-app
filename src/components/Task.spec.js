@@ -19,6 +19,13 @@ describe("<Task />", () => {
     expect(taskTarget).toEqual({id: 100, title: "Task 1", checked: false});
   });
 
+  it("example test map to obj", () => {
+    const selectedProps = ["id", "title", "checked"];
+    const myMap = new Map([["id", 100], ["title", "Task 1"], ["checked", false]]);
+    const taskTarget = Object.fromEntries(myMap);
+    expect(taskTarget).toEqual({id: 100, title: "Task 1", checked: false});
+  });
+
   it("renders correctly", () => {
     const task = {
       id: 100,
@@ -35,10 +42,11 @@ describe("<Task />", () => {
     expect(wrapper.props().children[0].props.checked).toEqual(false);
 
     const selectedProps = ["id", "label", "checked"];
-    const taskTargetProps = Object.entries(wrapper.props().children[0].props).filter(
+    // extract selectedProps from visual component Task:
+    const propsFromVisualTask = Object.entries(wrapper.props().children[0].props).filter(
           ([k, v]) => selectedProps.includes(k)).reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
     // tests props of visual component Task (visual label is: "100. Task 1"!!! not "Task 1" as is in input task)
-    expect(taskTargetProps).toEqual({id: 100, label: "100. Task 1", checked: false});
+    expect(propsFromVisualTask).toEqual({id: 100, label: "100. Task 1", checked: false});
 
     expect(tree.type).toEqual("ListGroupItem");
     expect(tree.children.length).toEqual(2);
