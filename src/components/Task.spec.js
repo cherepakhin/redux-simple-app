@@ -39,11 +39,12 @@ describe("<Task />", () => {
     expect(wrapper.props().children[0].props.id).toEqual(task.id);
     expect(wrapper.props().children[0].props.label).toEqual("100. Task 1");
     expect(wrapper.props().children[0].props.checked).toEqual(false);
-    const props = wrapper.props().children[0].props;
-//TODO: протестировать значения props
-//    expect(props).toEqual(
-//        {type: "checkbox", id: 100, title: "Task 1", checked: false, label: "100. Task 1"}
-//        );
+
+    const selectedProps = ["id", "label", "checked"];
+    const taskTarget = Object.entries(wrapper.props().children[0].props).filter(
+          ([k, v]) => selectedProps.includes(k)).reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
+    // tests props of visual component Task (visual label is: "100. Task 1"!!! not "Task 1" as is in input task)
+    expect(taskTarget).toEqual({id: 100, label: "100. Task 1", checked: false});
 
     expect(tree.type).toEqual("ListGroupItem");
 //    expect(tree.children.length).toEqual(2);
