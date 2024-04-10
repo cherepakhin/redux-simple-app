@@ -41,13 +41,13 @@ describe("<Task />", () => {
     expect(wrapper.props().children[0].props.checked).toEqual(false);
 
     const selectedProps = ["id", "label", "checked"];
-    const taskTarget = Object.entries(wrapper.props().children[0].props).filter(
+    const taskTargetProps = Object.entries(wrapper.props().children[0].props).filter(
           ([k, v]) => selectedProps.includes(k)).reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
     // tests props of visual component Task (visual label is: "100. Task 1"!!! not "Task 1" as is in input task)
-    expect(taskTarget).toEqual({id: 100, label: "100. Task 1", checked: false});
+    expect(taskTargetProps).toEqual({id: 100, label: "100. Task 1", checked: false});
 
     expect(tree.type).toEqual("ListGroupItem");
-//    expect(tree.children.length).toEqual(2);
+    expect(tree.children.length).toEqual(2);
     console.log(tree.children.children);
 //    {
 //      node: {
