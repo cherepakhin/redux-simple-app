@@ -24,4 +24,5 @@ yarn-error.log*
 .idea/
 yarn.lock
 *.zip
-
+.eslintcache
+perf.data
