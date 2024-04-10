@@ -10,13 +10,7 @@ jest.mock('react-redux', () => ({
 }));
 
 describe("<Task />", () => {
-  it("mapping", () => {
-    const task = {
-      id: 100,
-      title: "Task 1",
-      completed: false
-    };
-
+  it("example test mapping shallow props. See test \"renders correctly\".", () => {
     const selectedProps = ["id", "title", "checked"];
     const task0 = {type: "checkbox", id: 100, title: "Task 1", checked: false, label: "100. Task 1"};
     const taskTarget = Object.entries(task0).filter(
@@ -34,7 +28,7 @@ describe("<Task />", () => {
 
     const wrapper = shallow(<Task task={task} />);
     const tree = toJson(wrapper);
-    console.log(tree);
+//    console.log(tree);
 
     expect(wrapper.props().children[0].props.id).toEqual(task.id);
     expect(wrapper.props().children[0].props.label).toEqual("100. Task 1");
@@ -48,7 +42,7 @@ describe("<Task />", () => {
 
     expect(tree.type).toEqual("ListGroupItem");
     expect(tree.children.length).toEqual(2);
-    console.log(tree.children.children);
+//    console.log(tree.children.children);
 //    {
 //      node: {
 //        nodeType: 'function',
