@@ -19,12 +19,19 @@ describe("<Task />", () => {
     expect(taskTarget).toEqual({id: 100, title: "Task 1", checked: false});
   });
 
-  it("example test map to obj", () => {
-    const selectedProps = ["id", "title", "checked"];
-    const myMap = new Map([["id", 100], ["title", "Task 1"], ["checked", false]]);
-    const taskTarget = Object.fromEntries(myMap);
-    expect(taskTarget).toEqual({id: 100, title: "Task 1", checked: false});
+  it("filter map by selected keys", () => {
+    const myMap = new Map([["id", 100], ["title", "Task 1"], ["checked", false], ["type", "checkbox"]]);
+    const selectedKeys = ["id", "title", "checked"]; // checkbox must be deleted
+    const task = Object.fromEntries(myMap);
+    expect(task).toEqual({id: 100, title: "Task 1", checked: false, type: "checkbox"});
+
+    const filteredMap = new Map(
+      [...myMap]
+      .filter(([k, v]) => selectedKeys.includes(k)));
+
+    expect(filteredMap).toEqual(new Map([["id", 100], ["title", "Task 1"], ["checked", false]]));
   });
+
 
   it("renders correctly", () => {
     const task = {
