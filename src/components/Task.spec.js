@@ -3,12 +3,6 @@ import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import Task from "./Task";
 
-const task = {
-  id: 100,
-  title: "Task 1",
-  completed: false
-};
-
 // remove ERROR "could not find react-redux context value; please ensure the component is wrapped in a <Provider>"
 jest.mock('react-redux', () => ({
    useDispatch: jest.fn(),
@@ -17,6 +11,12 @@ jest.mock('react-redux', () => ({
 
 describe("<Task />", () => {
   it("mapping", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
     const selectedProps = ["id", "title", "checked"];
     const task0 = {type: "checkbox", id: 100, title: "Task 1", checked: false, label: "100. Task 1"};
     const taskTarget = Object.entries(task0).filter(
@@ -26,6 +26,12 @@ describe("<Task />", () => {
   });
 
   it("renders correctly", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
     const wrapper = shallow(<Task task={task} />);
     const tree = toJson(wrapper);
     console.log(tree);
