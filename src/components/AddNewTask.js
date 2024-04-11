@@ -17,6 +17,7 @@ const AddNewTask = () => {
 //    dispatch(actions.addTask({
 //      title: taskTitle
 //    }));
+
 // Variant 2. WORKED!
     var addTaskAction = actions.createAddTaskAction({ title: taskTitle});
 // actionAddTask:

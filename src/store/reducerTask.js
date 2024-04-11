@@ -2,6 +2,8 @@ import * as actions from './actionTypes';
 
 let lastId = 0;
 let state0 = [{ id: -1, title: '-----', completed: false}];
+// Здесь разместить REST API
+
 // reducer возвращает новый state c учетом action
 // эти функции вызывает dispatch с action
 //  AddNewTask: ...
