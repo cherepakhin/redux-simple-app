@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 import * as actions from "../store/actions";
 import { useDispatch } from "react-redux";
-import * as actionTypes from '../store/actionTypes';
 
 const AddNewTask = () => {
 // Вызовите useState на верхнем уровне вашего компонента, чтобы объявить переменную состояния.
@@ -19,7 +18,7 @@ const AddNewTask = () => {
 //      title: taskTitle
 //    }));
 // Variant 2. WORKED!
-    var addTaskAction = actions.addTaskAction({ title: taskTitle});
+    var addTaskAction = actions.createAddTaskAction({ title: taskTitle});
 // actionAddTask:
 //   type: actions.TASK_ADD,
 //   payload: taskTitle

@@ -42,5 +42,5 @@ export default function reducerTask(state = state0, action) {
 
     default:
       return state;
-  }
+  } // switch
 }

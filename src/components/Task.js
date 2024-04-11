@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Form, ListGroup } from "react-bootstrap";
-import { toggleTaskAction, removeTaskAction }  from "../store/actions";
+import { createToggleTaskAction, createRemoveTaskAction }  from "../store/actions";
 
 
 const Task = ({ task }) => {
@@ -10,7 +10,7 @@ const Task = ({ task }) => {
 
   const handleDeleteTask = (id) => {
     console.log("delete task id="+id);
-    dispatch(removeTaskAction(id));
+    dispatch(createRemoveTaskAction(id));
   }
 
   return (
@@ -20,7 +20,7 @@ const Task = ({ task }) => {
         type="checkbox"
         label={id+". "+title}
         checked={completed}
-        onChange={ () => dispatch(toggleTaskAction(id)) }
+        onChange={ () => dispatch(createToggleTaskAction(id)) }
       />
       <div className="list-group-item-actions">
         <span onClick={() => handleDeleteTask(id)}>Удалить</span>
