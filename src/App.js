@@ -11,16 +11,19 @@ function App() {
 
   return (
     <Container className="main-app-container">
-      <Row className="mb-4">
+      <Row className="mt-4">
         <Col className="mt-4">
+          <h4>Новая задача</h4>
           <AddNewTask />
         </Col>
       </Row>
       <Row>
-        <Col md={12}>
+        <Col className="mt-2">
           <h4>Список задач</h4>
         </Col>
-        <Col>
+      </Row>
+      <Row>
+        <Col className="mt-12">
           <TaskList tasks={ tasks } />
         </Col>
       </Row>
