@@ -1,9 +1,10 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import Task from "./Task";
 
-// remove ERROR "could not find react-redux context value; please ensure the component is wrapped in a <Provider>"
+// remove ERROR "could not find react-redux context value
+// please ensure the component is wrapped in a <Provider>"
 jest.mock('react-redux', () => ({
    useDispatch: jest.fn(),
    useSelector: jest.fn(),
