@@ -22,7 +22,6 @@ describe("Mount <Task />", () => {
 
     expect(taskView.type).toEqual("Task");
     expect(taskView.children.length).toEqual(1); // Form.Check, moreBtn, deleteBtn
-//    console.log(taskView);
 
     expect(taskView.props).toEqual({"task": {...task}}); // copy props
     expect(taskView.props).toEqual({"task": task}); // without copy props
