@@ -10,14 +10,6 @@ jest.mock('react-redux', () => ({
 }));
 
 describe("<Task />", () => {
-  it("example test mapping shallow props. See test \"renders correctly\".", () => {
-    const selectedProps = ["id", "title", "checked"];
-    const task0 = {type: "checkbox", id: 100, title: "Task 1", checked: false, label: "100. Task 1"};
-    const taskTarget = Object.entries(task0).filter(
-        ([k, v]) => selectedProps.includes(k)).reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
-
-    expect(taskTarget).toEqual({id: 100, title: "Task 1", checked: false});
-  });
 
   it("filter map by selected keys", () => {
     const myMap = new Map([["id", 100], ["title", "Task 1"], ["checked", false], ["type", "checkbox"]]);
@@ -32,8 +24,7 @@ describe("<Task />", () => {
     expect(filteredMap).toEqual(new Map([["id", 100], ["title", "Task 1"], ["checked", false]]));
   });
 
-
-  it("renders correctly", () => {
+  it("Check structure view: Form.Check, moreBtn, deleteBtn", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -42,21 +33,33 @@ describe("<Task />", () => {
 
     const wrapper = shallow(<Task task={task} />);
     const taskView = toJson(wrapper);
-//    console.log(tree);
+
+    expect(taskView.type).toEqual("ListGroupItem");
+    expect(taskView.children.length).toEqual(3); // Form.Check, moreBtn, deleteBtn
+  });
+
+  it("Test props render correctly", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
 
     expect(wrapper.props().children[0].props.id).toEqual(task.id);
     expect(wrapper.props().children[0].props.label).toEqual("100. Task 1");
     expect(wrapper.props().children[0].props.checked).toEqual(false);
 
     const selectedProps = ["id", "label", "checked"];
+    // props test
     // extract selectedProps from visual component Task:
     const propsFromVisualTask = Object.entries(wrapper.props().children[0].props).filter(
           ([k, v]) => selectedProps.includes(k)).reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
     // tests props of visual component Task (visual label is: "100. Task 1"!!! not "Task 1" as is in input task)
     expect(propsFromVisualTask).toEqual({id: 100, label: "100. Task 1", checked: false});
+  });
 
-    expect(taskView.type).toEqual("ListGroupItem");
-    expect(taskView.children.length).toEqual(3); // Form.Check, moreBtn, deleteBtn
 //TODO: delete comment
 //    console.log(tree.children.children);
 //    {
@@ -104,7 +107,6 @@ describe("<Task />", () => {
 
 //    const children = toJson(wrapper.children);
 //    console.log(children);
-  });
 
 
 //  it("renders without crashing", () => {
