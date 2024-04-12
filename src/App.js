@@ -11,19 +11,19 @@ function App() {
 
   return (
     <Container className="main-app-container">
-      <Row className="mt-4">
-        <Col className="mt-4">
+      <Row className="mt-4">    {/* "mt-4"  top margin (https://react-bootstrap.github.io/docs/layout/grid)*/}
+        <Col xs={6}>           {/* xs={6} 10 cells (https://react-bootstrap.github.io/docs/layout/grid)*/}
           <h4>Новая задача</h4>
           <AddNewTask />
         </Col>
       </Row>
       <Row>
-        <Col className="mt-2">
+        <Col>
           <h4>Список задач</h4>
         </Col>
       </Row>
       <Row>
-        <Col className="mt-12">
+        <Col>
           <TaskList tasks={ tasks } />
         </Col>
       </Row>

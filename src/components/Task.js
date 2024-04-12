@@ -12,6 +12,11 @@ const Task = ({ task }) => {
     console.log("delete task id="+id);
     dispatch(createRemoveTaskAction(id));
   }
+  const handleShowMore= (id) => {
+    console.log("show more task id="+id);
+// TODO: show more task
+//    dispatch(createRemoveTaskAction(id));
+  }
 
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
@@ -22,6 +27,9 @@ const Task = ({ task }) => {
         checked={completed}
         onChange={ () => dispatch(createToggleTaskAction(id)) }
       />
+      <div className="list-group-item-actions">
+        <span onClick={() => handleShowMore(id)}>Подробнее</span>
+      </div>
       <div className="list-group-item-actions">
         <span onClick={() => handleDeleteTask(id)}>Удалить</span>
       </div>
