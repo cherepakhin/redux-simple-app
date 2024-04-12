@@ -41,7 +41,7 @@ describe("<Task />", () => {
     };
 
     const wrapper = shallow(<Task task={task} />);
-    const tree = toJson(wrapper);
+    const taskView = toJson(wrapper);
 //    console.log(tree);
 
     expect(wrapper.props().children[0].props.id).toEqual(task.id);
@@ -55,8 +55,9 @@ describe("<Task />", () => {
     // tests props of visual component Task (visual label is: "100. Task 1"!!! not "Task 1" as is in input task)
     expect(propsFromVisualTask).toEqual({id: 100, label: "100. Task 1", checked: false});
 
-    expect(tree.type).toEqual("ListGroupItem");
-    expect(tree.children.length).toEqual(2);
+    expect(taskView.type).toEqual("ListGroupItem");
+    expect(taskView.children.length).toEqual(3); // Form.Check, moreBtn, deleteBtn
+//TODO: delete comment
 //    console.log(tree.children.children);
 //    {
 //      node: {
