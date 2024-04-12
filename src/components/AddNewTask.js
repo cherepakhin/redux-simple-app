@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 const AddNewTask = () => {
 // Вызовите useState на верхнем уровне вашего компонента, чтобы объявить переменную состояния.
-  const [taskTitle, setTaskTitle] = useState('DEFAULT VALUE FOR taskTitle'); // или ''
+  const [taskTitle, setTaskTitle] = useState('-'); // '-' - значение по умолчанию
   const dispatch = useDispatch();
 
   const handleTaskTitleChange = (e) => {
@@ -30,7 +30,7 @@ const AddNewTask = () => {
 
   return (
     <InputGroup className="mb-3">
-      <FormControl placeholder="Добавить новый таск" value={taskTitle} onChange={e => handleTaskTitleChange(e)} />
+      <FormControl placeholder="Название новой задачи" value={taskTitle} onChange={e => handleTaskTitleChange(e)} />
       <InputGroup.Append>
         <Button variant="outline-secondary" onClick={handleTaskSubmit}>Сохранить</Button>
       </InputGroup.Append>
