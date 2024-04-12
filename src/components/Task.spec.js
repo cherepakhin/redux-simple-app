@@ -60,51 +60,7 @@ describe("<Task />", () => {
     expect(propsFromVisualTask).toEqual({id: 100, label: "100. Task 1", checked: false});
   });
 
-//TODO: delete comment
-//    console.log(tree.children.children);
-//    {
-//      node: {
-//        nodeType: 'function',
-//        type: {
-//          '$$typeof': Symbol(react.forward_ref),
-//          render: [Function (anonymous)],
-//          defaultProps: [Object],
-//          displayName: 'ListGroupItem'
-//        },
-//        props: {
-//          className: false,
-//          children: [Array],
-//          variant: undefined,
-//          active: false,
-//          disabled: false
-//        },
-//        key: undefined,
-//        ref: null,
-//        instance: null,
-//        rendered: [ [Object], [Object] ]
-//      },
-//      type: 'ListGroupItem',
-//      props: { className: false, active: false, disabled: false },
-//      children: [
-//        {
-//          node: [Object],
-//          type: 'FormCheck',
-//          props: [Object],
-//          children: null,
-//          '$$typeof': Symbol(react.test.json)
-//        },
-//        {
-//          node: [Object],
-//          type: 'div',
-//          props: [Object],
-//          children: [Array],
-//          '$$typeof': Symbol(react.test.json)
-//        }
-//      ],
-//      '$$typeof': Symbol(react.test.json)
-//    }
-
-
+// Example tests:
 //    const children = toJson(wrapper.children);
 //    console.log(children);
 
