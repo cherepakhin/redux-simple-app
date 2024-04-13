@@ -3,6 +3,8 @@ import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import Task from "./Task";
 
+// Example MOUNT test on SIMPLE component Task
+
 // remove ERROR "could not find react-redux context value; please ensure the component is wrapped in a <Provider>"
 jest.mock('react-redux', () => ({
    useDispatch: jest.fn(),

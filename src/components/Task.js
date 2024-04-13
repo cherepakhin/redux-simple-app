@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Form, ListGroup } from "react-bootstrap";
 import { createToggleTaskAction, createRemoveTaskAction }  from "../store/actions";
 
-
 const Task = ({ task }) => {
   const { id, title, completed } = task;
   const dispatch = useDispatch();

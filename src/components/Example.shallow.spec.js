@@ -3,13 +3,15 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import Task from "./Task";
 
+// Example SHALLOW test on SIMPLE component Task
+
 // remove ERROR "could not find react-redux context value; please ensure the component is wrapped in a <Provider>"
 jest.mock('react-redux', () => ({
    useDispatch: jest.fn(),
    useSelector: jest.fn(),
 }));
 
-describe("Shallow <Task />", () => {
+describe("Example Shallow on component <Task />", () => {
   it("Shallow check structure view: Form.Check, moreBtn, deleteBtn", () => {
     const task = {
       id: 100,
