@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import {createAddTaskAction, createToggleTaskAction} from "./actions";
+import {createAddTaskAction, createToggleTaskAction, createRemoveTaskAction} from "./actions";
 
 describe("actions tests", () => {
   it("createAddTaskAction.", () => {
@@ -15,6 +15,15 @@ describe("actions tests", () => {
       const action = createToggleTaskAction(ID);
       expect(action).toEqual({
                                type: actionTypes.TASK_TOGGLE,
+                               payload: {id: 100}
+                             });
+    });
+
+  it("createRemoveTaskAction.", () => {
+      const ID = 100;
+      const action = createRemoveTaskAction(ID);
+      expect(action).toEqual({
+                               type: actionTypes.TASK_REMOVE,
                                payload: {id: 100}
                              });
     });
