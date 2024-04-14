@@ -106,7 +106,7 @@ case actions.TASK_ADD:
 
 Shallow генерирует более поверхностное представление объекта.
 
-Пример представления Shallow (Example.shallow.spec.js), как бы на __1 один уровень__. В примере ниже __компонент FormCheck не отрендерен полностью__:
+Пример представления Shallow (Example.shallow.spec.js), как бы на __1 один уровень__. В примере ниже __компонент FormCheck не отрендерен. Просто обозначен.__:
 
 ````javascript
  PASS  src/components/Example.shallow.spec.js
