@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import {createAddTaskAction} from "./actions";
+import {createAddTaskAction, createToggleTaskAction} from "./actions";
 
 describe("actions tests", () => {
   it("createAddTaskAction.", () => {
@@ -7,6 +7,15 @@ describe("actions tests", () => {
       expect(action).toEqual({
                                type: actionTypes.TASK_ADD,
                                payload: "Example task"
+                             });
+    });
+
+  it("createToggleTaskAction.", () => {
+      const ID = 100;
+      const action = createToggleTaskAction(ID);
+      expect(action).toEqual({
+                               type: actionTypes.TASK_TOGGLE,
+                               payload: {id: 100}
                              });
     });
 });
