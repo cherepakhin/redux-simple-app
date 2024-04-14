@@ -2,9 +2,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Form, ListGroup } from "react-bootstrap";
 import { createToggleTaskAction, createRemoveTaskAction }  from "../store/actions";
+//import {PropTypes} from "prop-types";
 
 const Task = ({ task }) => {
-  const { id, title, completed } = task;
+  console.log("props=", task);
+  const { id, title, completed } = {...task};
   const dispatch = useDispatch();
 
   const handleDeleteTask = (id) => {
@@ -35,5 +37,17 @@ const Task = ({ task }) => {
     </ListGroup.Item>
   )
 }
+
+//Task.propTypes = {
+//    task: PropTypes.shape({
+//            id: React.PropTypes.number.isRequired,
+//            title: React.PropTypes.string.isRequired,
+//            completed: React.PropTypes.bool.isRequired
+//  }).isRequired
+//const defaultProps = {
+//  id: 0,
+//  title: "- - -",
+//  completed: false
+//}
 
 export default Task;
