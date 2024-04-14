@@ -101,3 +101,68 @@ case actions.TASK_ADD:
     default:
       return state;
 }
+
+### Разница между shallow и mount
+
+Shallow генерирует более поверхностное представление объекта.
+
+Пример представления Shallow (Example.shallow.spec.js), как бы на __1 один уровень__. В примере ниже __компонент FormCheck не отрендерен полностью__:
+
+````javascript
+ PASS  src/components/Example.shallow.spec.js
+  ● Console
+
+    console.log src/components/Example.shallow.spec.js:24
+      <ListGroupItem className={false} variant={[undefined]} active={false} disabled={false}>
+        <FormCheck id={100} type="checkbox" label="100. Task 1" checked={false} onChange={[Function: onChange]} />
+        <div className="list-group-item-actions">
+          <span onClick={[Function: onClick]}>
+            Подробнее
+          </span>
+        </div>
+        <div className="list-group-item-actions">
+          <span onClick={[Function: onClick]}>
+            Удалить
+          </span>
+        </div>
+      </ListGroupItem>
+````
+
+Пример представления Mount (Example.mount.spec.js). __Компонент FormCheck(Task.js) отрендерен полностью.__:
+
+````javascript
+ PASS  src/components/Example.mount.spec.js
+  ● Console
+
+    console.log src/components/Example.mount.spec.js:24
+    <Task task={{...}}>
+    <ListGroupItem className={false} variant={[undefined]} active={false} disabled={false}>
+      <ForwardRef as="div" onClick={[Function (anonymous)]} className="list-group-item" disabled={false}>
+        <div disabled={false} onClick={[Function (anonymous)]} className="list-group-item">
+		  <FormCheck id={100} type="checkbox" label="100. Task 1" checked={false} onChange={[Function: onChange]}>
+			<div style={[undefined]} className="form-check">
+			  <FormCheckInput checked={false} onChange={[Function: onChange]} type="checkbox" isValid={false} isInvalid={false} isStatic={false} disabled={false} as="input">
+				<input checked={false} onChange={[Function: onChange]} disabled={false} type="checkbox" id={100} className="form-check-input" />
+			  </FormCheckInput>
+			  <FormCheckLabel title="">
+				<label title="" htmlFor={100} className="form-check-label">
+				  100. Task 1
+				</label>
+			  </FormCheckLabel>
+           </div>
+		 </FormCheck>
+         <div className="list-group-item-actions">
+            <span onClick={[Function: onClick]}>
+			  Подробнее
+			</span>
+		 </div>
+		 <div className="list-group-item-actions">
+		   <span onClick={[Function: onClick]}>
+		     Удалить
+	       </span>
+	     </div>
+       </div>
+      </ForwardRef>
+  </ListGroupItem>
+  </Task>    
+````

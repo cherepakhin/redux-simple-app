@@ -19,7 +19,10 @@ describe("Mount <Task />", () => {
       completed: false
     };
 
-    const wrapper = mount(<Task task={task} />);
+    const wrapper = mount(<Task task={task} />); // MOUNT!!!
+
+    console.log(wrapper.debug()); // for demo mount
+
     const taskView = toJson(wrapper);
 
     expect(taskView.type).toEqual("Task");

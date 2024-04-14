@@ -3,7 +3,8 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import Task from "./Task";
 
-// Example SHALLOW test on SIMPLE component Task
+// Example SHALLOW test (поверхностное тестирование)  on SIMPLE component Task
+// SHALLOW: При копировании объектов или массивов JavaScript копирует данные только на один уровень вглубь.
 
 // remove ERROR "could not find react-redux context value; please ensure the component is wrapped in a <Provider>"
 jest.mock('react-redux', () => ({
@@ -19,7 +20,8 @@ describe("Example Shallow on component <Task />", () => {
       completed: false
     };
 
-    const wrapper = shallow(<Task task={task} />);
+    const wrapper = shallow(<Task task={task} />); //SHALLOW!!!
+    console.log(wrapper.debug()); // for demo shallow
     const taskView = toJson(wrapper);
 
     expect(taskView.type).toEqual("ListGroupItem");
