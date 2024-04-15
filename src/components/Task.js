@@ -105,7 +105,7 @@ const Task = ({ task }) => {
         <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
         <Modal.Footer>
             <Button className="col-2" variant="primary" onClick={handleConfirmDeleteConfirmDlg}>Да</Button>
-            <Button className="col-2" variant="primary" onClick={handleCancelDeleteConfirmDlg}>Нет</Button>
+            <Button className="col-2" variant="secondary" onClick={handleCancelDeleteConfirmDlg}>Нет</Button>
         </Modal.Footer>
       </Modal>
 
