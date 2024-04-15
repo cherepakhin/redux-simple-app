@@ -62,17 +62,17 @@ const Task = ({ task }) => {
 //    dispatch(createRemoveTaskAction(id));
   }
 
-  const handleCloseDeleteConfirmDlg = (task) => {
-    console.log("before handleShowDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
+  const handleCancelDeleteConfirmDlg = (task) => {
+    console.log("before handleCloseDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
     setShowDeleteConfirmDlg(false);
-    console.log("after handleDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
+    console.log("after handleCloseDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
     console.log("delete task id=" + id);
   }
 
   const handleConfirmDeleteConfirmDlg = (task) => {
     console.log("before handleConfirmDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
     setShowDeleteConfirmDlg(false);
-    console.log("after handleConfirmDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
+    console.log("after  handleConfirmDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
     console.log("delete task id=" + id);
 
     if(id < 0) {
@@ -104,12 +104,8 @@ const Task = ({ task }) => {
         </Modal.Header>
         <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleConfirmDeleteConfirmDlg}>
-            Да
-          </Button>
-          <Button variant="primary" onClick={handleCloseDeleteConfirmDlg}>
-            Нет
-          </Button>
+            <Button className="col-2" variant="primary" onClick={handleConfirmDeleteConfirmDlg}>Да</Button>
+            <Button className="col-2" variant="primary" onClick={handleCancelDeleteConfirmDlg}>Нет</Button>
         </Modal.Footer>
       </Modal>
 
