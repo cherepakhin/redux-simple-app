@@ -166,3 +166,30 @@ Shallow генерирует более поверхностное предст�
   </ListGroupItem>
   </Task>    
 ````
+
+### CSS стили
+
+Удаление круглых углов:
+
+````javascript
+.modal-content {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    -webkit-border: 0px !important;
+    -moz-border: 0px !important;
+    border: 0px !important;
+}
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.form-control {
+    border-radius: 0px !important;
+}
+
+.list-group {
+    border-radius: 0px !important;
+}
+````

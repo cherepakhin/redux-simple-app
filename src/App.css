@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  border-radius: 0;
 }
 
 .App-logo {
@@ -26,6 +27,7 @@
 
 .App-link {
   color: #61dafb;
+  border-radius: 0;
 }
 
 .main-app-container .list-group-item {
@@ -33,12 +35,12 @@
 }
 
 .list-group-item .form-check {
-  width: 90%;
+  width: 70%;
 }
 
 .list-group-item-actions {
   width: 10%;
-  text-align: right;
+  text-align: center;
 }
 
 .list-group-item-actions span {
@@ -70,4 +72,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.modal-content {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  -webkit-border: 0px !important;
+  -moz-border: 0px !important;
+  border: 0px !important;
+}
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.form-control {
+    border-radius: 0px !important;
+}
+
+.list-group {
+    border-radius: 0px !important;
 }
