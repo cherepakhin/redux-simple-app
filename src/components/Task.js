@@ -10,22 +10,16 @@ const Task = ({ task }) => {
   const { id, title, completed } = {...task};
   const dispatch = useDispatch();
 
-  const [showModalWarning, setShowModalWarning] = useState(false);
+  const [showDemoModalWarning, setShowDemoModalWarning] = useState(false);
 
-  const logModal = () => {
-    console.log("handleCloseModalWarning show modal " + showModalWarning);
+// this business handler
+  const handleShowMore= (id) => {
+    console.log("show more task id="+id);
+// TODO: show more task
+//    dispatch(createRemoveTaskAction(id));
   }
 
-  const handleCloseModalWarning = () => {
-    logModal();
-    setShowModalWarning(false);
-  }
-
-  const handleShowModalWarning = () => {
-    logModal();
-    setShowModalWarning(true);
-  }
-
+// this business handler
   const handleDeleteTask = (id) => {
     if(id < 0) {
       console.log("delete task id="+id);
@@ -35,21 +29,27 @@ const Task = ({ task }) => {
     dispatch(createRemoveTaskAction(id));
   }
 
-  const handleShowMore= (id) => {
-    console.log("show more task id="+id);
-// TODO: show more task
-//    dispatch(createRemoveTaskAction(id));
+// this demo handler for work SHOW modal dialog
+  const handleShowDemoModalWarning = () => {
+    console.log("handleShowModalWarning " + showDemoModalWarning);
+    setShowDemoModalWarning(true);
+  }
+
+// this demo handler for work CLOSE modal dialog
+  const handleCloseDemoModalWarning = () => {
+    console.log("handleCloseModalWarning " + showDemoModalWarning);
+    setShowDemoModalWarning(false);
   }
 
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
-      <Modal show={showModalWarning} className="rounded-0">
+      <Modal show={showDemoModalWarning} className="rounded-0">
         <Modal.Header closeButton>
           <Modal.Title>Внимание!</Modal.Title>
         </Modal.Header>
         <Modal.Body>{"Закрыть {id: "+id+", title: '"+title+"'}?"}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseModalWarning}>
+          <Button variant="primary" onClick={handleCloseDemoModalWarning}>
             Закрыть
           </Button>
         </Modal.Footer>
@@ -69,7 +69,7 @@ const Task = ({ task }) => {
         <span onClick={() => handleDeleteTask(id)}>Удалить</span>
       </div>
       <div className="list-group-item-actions" align="right">
-        <span onClick={() => handleShowModalWarning()}>Modal</span>
+        <span onClick={() => handleShowDemoModalWarning()}>Modal</span>
       </div>
     </ListGroup.Item>
   )
