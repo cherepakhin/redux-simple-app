@@ -32,7 +32,7 @@ const AddNewTask = () => {
     <InputGroup className="mb-3">
       <FormControl placeholder="Название новой задачи" value={taskTitle} onChange={e => handleTaskTitleChange(e)} />
       <InputGroup.Append>
-        <Button variant="outline-secondary" onClick={handleTaskSubmit}>Сохранить</Button>
+        <Button onClick={handleTaskSubmit}>Сохранить</Button>
       </InputGroup.Append>
     </InputGroup>
   )
