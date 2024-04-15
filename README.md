@@ -209,6 +209,18 @@ Shallow генерирует более поверхностное предст�
 }
 ````
 
+Задание ширины элемента в Bootstrap:
+
+````javacript
+        <Modal.Footer>
+            <Button className="col-2" variant="primary" onClick={handleConfirmDeleteConfirmDlg}>Да</Button>
+            <Button className="col-2" variant="secondary" onClick={handleCancelDeleteConfirmDlg}>Нет</Button>
+        </Modal.Footer>
+````
+
+__className="col-2"__
+(см. src/component/Task.js)
+
 ### Размещение на сервере
 
 Собрать:
