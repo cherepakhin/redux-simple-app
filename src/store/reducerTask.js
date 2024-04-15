@@ -33,6 +33,8 @@ export default function reducerTask(state = state0, action) {
       }];
 
     case actions.TASK_TOGGLE:
+      console.log("actions.TASK_TOGGLE");
+      console.log(action.payload);
       return state.map(task => {
         if (task.id === action.payload.id)
           return { ...task, completed: !task.completed }
@@ -40,6 +42,8 @@ export default function reducerTask(state = state0, action) {
       });
 
     case actions.TASK_REMOVE:
+      console.log("actions.TASK_REMOVE");
+      console.log(action.payload);
       return state.filter(task => action.payload.id !== task.id);
 
     default:
