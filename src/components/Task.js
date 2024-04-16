@@ -10,43 +10,20 @@ const Task = ({ task }) => {
   const { id, title, completed } = {...task};
   const dispatch = useDispatch();
 
-  const [showDemoModalWarning, setShowDemoModalWarning] = useState(false);
   const [showDeleteConfirmDlg, setShowDeleteConfirmDlg] = useState(false);
+  const [showVisibleMoreDlg, setVisibleShowMoreDlg] = useState(false);
 
-// this business handler
+// show more dialog
   const handleShowMore= (id) => {
-    console.log("show more task id="+id);
-// TODO: show more task
-//    dispatch(createRemoveTaskAction(id));
+    console.log("ShowMoreDlg task id="+id);
+    setVisibleShowMoreDlg(true);
   }
 
-// this demo handler for work SHOW modal dialog
-  const handleShowDemoModalWarning = () => {
-    console.log("handleShowModalWarning " + showDemoModalWarning);
-    setShowDemoModalWarning(true);
+  const handleShowMoreDlgClose = () => {
+    console.log("handleShowMoreDlgClose " + showVisibleMoreDlg);
+    setVisibleShowMoreDlg(false);
   }
 
-// this demo handler for work CLOSE modal dialog
-  const handleCloseDemoModalWarning = () => {
-    console.log("handleCloseModalWarning " + showDemoModalWarning);
-    setShowDemoModalWarning(false);
-  }
-
-// this business handler
-//  const handleDeleteTask = (id) => {
-//    if(id < 0) {
-//      console.log("delete task id="+id);
-//      return
-//    };
-//    console.log("handleDeleteTask task id="+id);
-//    dispatch(createRemoveTaskAction(id));
-//  }
-
-//  const handleDeleteConfirmDlg =(id) => {
-//      console.log("function delete task id=" + id);
-//  }
-
-// handler for show DELETE modal dialog
   const handleDeleteConfirmDlg = (task) => {
     console.log("before handleShowDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
     setShowDeleteConfirmDlg(true);
@@ -57,9 +34,6 @@ const Task = ({ task }) => {
       console.log("delete task id=" + id);
       return
     };
-// TODO: uncomment for delete task
-//    setShowDeleteConfirmDlg(false);
-//    dispatch(createRemoveTaskAction(id));
   }
 
   const handleCancelDeleteConfirmDlg = (task) => {
@@ -86,18 +60,6 @@ const Task = ({ task }) => {
 
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
-      <Modal show={showDemoModalWarning} className="rounded-0">
-        <Modal.Header closeButton>
-          <Modal.Title>Внимание!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{"Закрыть {id: "+id+", title: '"+title+"'}?"}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseDemoModalWarning}>
-            Закрыть
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
       <Modal show={showDeleteConfirmDlg} className="rounded-0">
         <Modal.Header closeButton>
           <Modal.Title>Удалить?</Modal.Title>
@@ -106,6 +68,16 @@ const Task = ({ task }) => {
         <Modal.Footer>
             <Button className="col-2" variant="primary" onClick={handleConfirmDeleteConfirmDlg}>Да</Button>
             <Button className="col-2" variant="secondary" onClick={handleCancelDeleteConfirmDlg}>Нет</Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showVisibleMoreDlg} className="rounded-0">
+        <Modal.Header closeButton>
+          <Modal.Title>Подробнее о задаче</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
+        <Modal.Footer>
+            <Button className="col-2" variant="primary" onClick={handleShowMoreDlgClose}>Закрыть</Button>
         </Modal.Footer>
       </Modal>
 
@@ -121,9 +93,6 @@ const Task = ({ task }) => {
       </div>
       <div className="list-group-item-actions" align="center">
         <span onClick={() => handleDeleteConfirmDlg(id)}>Удалить</span>
-      </div>
-      <div className="list-group-item-actions" align="right">
-        <span onClick={() => handleShowDemoModalWarning()}>Modal</span>
       </div>
     </ListGroup.Item>
   )
