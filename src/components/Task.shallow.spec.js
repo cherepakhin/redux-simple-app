@@ -39,7 +39,7 @@ describe("<Task />", () => {
     expect(taskView.children.length).toEqual(5); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить
   });
 
-  it("Task showDeleteConfirmDlg hidden", () => {
+  it("showDeleteConfirmDlg hidden in Task", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -52,7 +52,7 @@ describe("<Task />", () => {
     expect(showDeleteConfirmDlg.props.show).toEqual(false);
   });
 
-  it("Task showVisibleMoreDlg hidden", () => {
+  it("showVisibleMoreDlg hidden in Task", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -65,7 +65,7 @@ describe("<Task />", () => {
     expect(showVisibleMoreDlg.props.show).toEqual(false);
   });
 
-  it("Task formCheck", () => {
+  it("check props formCheck in Task", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -81,7 +81,7 @@ describe("<Task />", () => {
     expect(formCheck.props.checked).toEqual(task.completed);
   });
 
-  it("Task showDeleteConfirmDlg NOT visible", () => {
+  it("showDeleteConfirmDlg NOT visible in Task ", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -94,7 +94,7 @@ describe("<Task />", () => {
     expect(showDeleteConfirmDlg.props.show).toEqual(false);
   });
 
-  it("Task showMoreBtn props", () => {
+  it("check showMoreBtn props in Task", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -108,7 +108,7 @@ describe("<Task />", () => {
     expect(showMoreBtn.props["children"].props.children).toEqual("Подробнее");
   });
 
-  it("Task deleteBtn props", () => {
+  it("check deleteBtn props in Task", () => {
     const task = {
       id: 100,
       title: "Task 1",
