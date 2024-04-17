@@ -48,8 +48,21 @@ describe("<Task />", () => {
 
     const wrapper = shallow(<Task task={task} />);
     const showDeleteConfirmDlg = wrapper.props().children[0];
-    console.log(showDeleteConfirmDlg);
     expect(showDeleteConfirmDlg.props.show).toEqual(false);
+
+    const showVisibleMoreDlg = wrapper.props().children[1];
+    expect(showVisibleMoreDlg.props.show).toEqual(false);
+
+    const formCheck = wrapper.props().children[2]; //Form.Check
+    expect(formCheck.props.id).toEqual(task.id);
+    expect(formCheck.props.type).toEqual("checkbox");
+    expect(formCheck.props.label).toEqual("100. Task 1");
+    expect(formCheck.props.checked).toEqual(task.completed);
+
+    const showMoreBtn = wrapper.props().children[3]; //Подробнее
+    console.log(showMoreBtn.props); // className: 'list-group-item-actions',
+    expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
+
 //    expect(wrapper.props().children[0].props.id).toEqual(task.id);
 //    expect(wrapper.props().children[0].props.label).toEqual("100. Task 1");
 //    expect(wrapper.props().children[0].props.checked).toEqual(false);
