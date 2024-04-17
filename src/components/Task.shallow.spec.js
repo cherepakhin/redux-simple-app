@@ -36,7 +36,7 @@ describe("<Task />", () => {
     const taskView = toJson(wrapper);
 
     expect(taskView.type).toEqual("ListGroupItem");
-    expect(taskView.children.length).toEqual(5); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить
+    expect(taskView.children.length).toBe(5); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить
   });
 
   it("showDeleteConfirmDlg hidden in Task", () => {
@@ -49,7 +49,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const showDeleteConfirmDlg = wrapper.props().children[0];
 
-    expect(showDeleteConfirmDlg.props.show).toEqual(false);
+    expect(showDeleteConfirmDlg.props.show).toBe(false);
   });
 
   it("showVisibleMoreDlg hidden in Task", () => {
@@ -62,7 +62,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const showVisibleMoreDlg = wrapper.props().children[1];
 
-    expect(showVisibleMoreDlg.props.show).toEqual(false);
+    expect(showVisibleMoreDlg.props.show).toBe(false);
   });
 
   it("check props formCheck in Task", () => {
@@ -75,10 +75,10 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const formCheck = wrapper.props().children[2];
 
-    expect(formCheck.props.id).toEqual(task.id);
-    expect(formCheck.props.type).toEqual("checkbox");
-    expect(formCheck.props.label).toEqual("100. Task 1");
-    expect(formCheck.props.checked).toEqual(task.completed);
+    expect(formCheck.props.id).toBe(task.id);
+    expect(formCheck.props.type).toBe("checkbox");
+    expect(formCheck.props.label).toBe("100. Task 1");
+    expect(formCheck.props.checked).toBe(task.completed);
   });
 
   it("showDeleteConfirmDlg NOT visible in Task ", () => {
@@ -91,7 +91,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const showDeleteConfirmDlg = wrapper.props().children[0];
 
-    expect(showDeleteConfirmDlg.props.show).toEqual(false);
+    expect(showDeleteConfirmDlg.props.show).toBe(false);
   });
 
   it("check showMoreBtn props in Task", () => {
@@ -105,7 +105,7 @@ describe("<Task />", () => {
     const showMoreBtn = wrapper.props().children[3];
 
     expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
-    expect(showMoreBtn.props["children"].props.children).toEqual("Подробнее");
+    expect(showMoreBtn.props["children"].props.children).toBe("Подробнее");
   });
 
   it("check deleteBtn props in Task", () => {
@@ -119,8 +119,8 @@ describe("<Task />", () => {
 
     const deleteBtn = wrapper.props().children[4];
 
-    expect(deleteBtn.props["className"]).toEqual("list-group-item-actions");
-    expect(deleteBtn.props["children"].props.children).toEqual("Удалить");
+    expect(deleteBtn.props["className"]).toBe("list-group-item-actions");
+    expect(deleteBtn.props["children"].props.children).toBe("Удалить");
   });
 
 // Example tests:
