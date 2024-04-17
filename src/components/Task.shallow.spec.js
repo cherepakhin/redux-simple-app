@@ -62,6 +62,11 @@ describe("<Task />", () => {
     const showMoreBtn = wrapper.props().children[3]; //Подробнее
     console.log(showMoreBtn.props); // className: 'list-group-item-actions',
     expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
+    expect(showMoreBtn.props["children"].props.children).toEqual("Подробнее");
+
+    const deleteBtn = wrapper.props().children[4]; //Удалить
+    expect(deleteBtn.props["className"]).toEqual("list-group-item-actions");
+    expect(deleteBtn.props["children"].props.children).toEqual("Удалить");
 
 //    expect(wrapper.props().children[0].props.id).toEqual(task.id);
 //    expect(wrapper.props().children[0].props.label).toEqual("100. Task 1");
