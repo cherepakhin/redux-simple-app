@@ -3,8 +3,6 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import Task from "./Task";
 
-// remove ERROR "could not find react-redux context value
-// please ensure the component is wrapped in a <Provider>"
 jest.mock('react-redux', () => ({
    useDispatch: jest.fn(),
    useSelector: jest.fn(),
@@ -49,6 +47,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const showDeleteConfirmDlg = wrapper.props().children[0];
 
+    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
     expect(showDeleteConfirmDlg.props.show).toBe(false);
   });
 
@@ -62,6 +61,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const showVisibleMoreDlg = wrapper.props().children[1];
 
+    expect(showVisibleMoreDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
     expect(showVisibleMoreDlg.props.show).toBe(false);
   });
 
@@ -91,6 +91,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
     const showDeleteConfirmDlg = wrapper.props().children[0];
 
+    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0");
     expect(showDeleteConfirmDlg.props.show).toBe(false);
   });
 
@@ -105,6 +106,7 @@ describe("<Task />", () => {
     const showMoreBtn = wrapper.props().children[3];
 
     expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
+    expect(showMoreBtn.props["align"]).toBe("left");
     expect(showMoreBtn.props["children"].props.children).toBe("Подробнее");
   });
 
@@ -118,8 +120,9 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
 
     const deleteBtn = wrapper.props().children[4];
-
+    console.log(wrapper.props());
     expect(deleteBtn.props["className"]).toBe("list-group-item-actions");
+    expect(deleteBtn.props["align"]).toBe("center");
     expect(deleteBtn.props["children"].props.children).toBe("Удалить");
   });
 
@@ -128,10 +131,6 @@ describe("<Task />", () => {
 //    console.log(children);
 
 
-//  it("renders without crashing", () => {
-//   shallow(<App />);
-//  });
-//
 //  it("renders Account header", () => {
 //    const wrapper = shallow(<App />);
 //    const header = <h1>Display Active Users Account Details</h1>;
