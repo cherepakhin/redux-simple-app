@@ -106,7 +106,7 @@ describe("<Task />", () => {
     const showMoreBtn = wrapper.props().children[3];
 
     expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
-    expect(showMoreBtn.props["align"]).toBe("left");
+    expect(showMoreBtn.props["align"]).toBe("left"); // align in cell
     expect(showMoreBtn.props["children"].props.children).toBe("Подробнее");
   });
 
@@ -122,7 +122,7 @@ describe("<Task />", () => {
     const deleteBtn = wrapper.props().children[4];
     console.log(wrapper.props());
     expect(deleteBtn.props["className"]).toBe("list-group-item-actions");
-    expect(deleteBtn.props["align"]).toBe("center");
+    expect(deleteBtn.props["align"]).toBe("center"); // align in cell
     expect(deleteBtn.props["children"].props.children).toBe("Удалить");
   });
 
