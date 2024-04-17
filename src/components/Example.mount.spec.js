@@ -1,7 +1,7 @@
-import React from "react";
-import { mount } from "enzyme";
+//import React from "react";
+//import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
-import Task from "./Task";
+//import Task from "./Task";
 
 // Example MOUNT test on SIMPLE component Task
 
@@ -11,7 +11,8 @@ jest.mock('react-redux', () => ({
    useSelector: jest.fn(),
 }));
 
-describe("Mount <Task />", () => {
+//TODO: delete test
+describe("Exmplde Mount <Task />", () => {
   it("Mount check structure view: Form.Check, moreBtn, deleteBtn", () => {
     const task = {
       id: 100,

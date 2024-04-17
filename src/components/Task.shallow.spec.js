@@ -38,19 +38,22 @@ describe("<Task />", () => {
   });
 
 //TODO: move to DeleteConfirmDlg.spec.js
-//  it("showDeleteConfirmDlg hidden in Task", () => {
-//    const task = {
-//      id: 100,
-//      title: "Task 1",
-//      completed: false
-//    };
-//
-//    const wrapper = shallow(<Task task={task} />);
-//    const showDeleteConfirmDlg = wrapper.props().children[0];
+  it("showDeleteConfirmDlg hidden in Task", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
+//    console.log(wrapper);
+    const showDeleteConfirmDlg = wrapper.props().children[0];
+//    console.log(showDeleteConfirmDlg);
+    expect(showDeleteConfirmDlg.props).toEqual({ id: 100, title: 'Task 1', visible: false });
 //
 //    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
-//    expect(showDeleteConfirmDlg.props.show).toBe(false);
-//  });
+//    expect(showDeleteConfirmDlg.type).toEqual("DeleteConfirmDlg");
+  });
 
 //TODO: move to MoreDlg.spec.js
 //  it("showVisibleMoreDlg hidden in Task", () => {
@@ -123,7 +126,7 @@ describe("<Task />", () => {
     const wrapper = shallow(<Task task={task} />);
 
     const deleteBtn = wrapper.props().children[4];
-    console.log(wrapper.props());
+//    console.log(wrapper.props());
     expect(deleteBtn.props["className"]).toBe("list-group-item-actions");
     expect(deleteBtn.props["align"]).toBe("center"); // align in cell
     expect(deleteBtn.props["children"].props.children).toBe("Удалить");
