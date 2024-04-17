@@ -39,7 +39,7 @@ describe("<Task />", () => {
     expect(taskView.children.length).toEqual(5); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить
   });
 
-  it("Test props render correctly", () => {
+  it("Task showDeleteConfirmDlg hidden", () => {
     const task = {
       id: 100,
       title: "Task 1",
@@ -48,37 +48,79 @@ describe("<Task />", () => {
 
     const wrapper = shallow(<Task task={task} />);
     const showDeleteConfirmDlg = wrapper.props().children[0];
+
     expect(showDeleteConfirmDlg.props.show).toEqual(false);
+  });
 
+  it("Task showVisibleMoreDlg hidden", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
     const showVisibleMoreDlg = wrapper.props().children[1];
-    expect(showVisibleMoreDlg.props.show).toEqual(false);
 
-    const formCheck = wrapper.props().children[2]; //Form.Check
+    expect(showVisibleMoreDlg.props.show).toEqual(false);
+  });
+
+  it("Task formCheck", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
+    const formCheck = wrapper.props().children[2];
+
     expect(formCheck.props.id).toEqual(task.id);
     expect(formCheck.props.type).toEqual("checkbox");
     expect(formCheck.props.label).toEqual("100. Task 1");
     expect(formCheck.props.checked).toEqual(task.completed);
+  });
 
-    const showMoreBtn = wrapper.props().children[3]; //Подробнее
-    console.log(showMoreBtn.props); // className: 'list-group-item-actions',
+  it("Task showDeleteConfirmDlg NOT visible", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
+    const showDeleteConfirmDlg = wrapper.props().children[0];
+
+    expect(showDeleteConfirmDlg.props.show).toEqual(false);
+  });
+
+  it("Task showMoreBtn props", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
+    const showMoreBtn = wrapper.props().children[3];
+
     expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
     expect(showMoreBtn.props["children"].props.children).toEqual("Подробнее");
+  });
 
-    const deleteBtn = wrapper.props().children[4]; //Удалить
+  it("Task deleteBtn props", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      completed: false
+    };
+
+    const wrapper = shallow(<Task task={task} />);
+
+    const deleteBtn = wrapper.props().children[4];
+
     expect(deleteBtn.props["className"]).toEqual("list-group-item-actions");
     expect(deleteBtn.props["children"].props.children).toEqual("Удалить");
-
-//    expect(wrapper.props().children[0].props.id).toEqual(task.id);
-//    expect(wrapper.props().children[0].props.label).toEqual("100. Task 1");
-//    expect(wrapper.props().children[0].props.checked).toEqual(false);
-
-//    const selectedProps = ["id", "label", "checked"];
-    // props test
-    // extract selectedProps from visual component Task:
-//    const propsFromVisualTask = Object.entries(wrapper.props().children[0].props).filter(
-//          ([k, v]) => selectedProps.includes(k)).reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
-    // tests props of visual component Task (visual label is: "100. Task 1"!!! not "Task 1" as is in input task)
-//    expect(propsFromVisualTask).toEqual({id: 100, label: "100. Task 1", checked: false});
   });
 
 // Example tests:
