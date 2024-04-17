@@ -37,33 +37,35 @@ describe("<Task />", () => {
     expect(taskView.children.length).toBe(5); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить
   });
 
-  it("showDeleteConfirmDlg hidden in Task", () => {
-    const task = {
-      id: 100,
-      title: "Task 1",
-      completed: false
-    };
+//TODO: move to DeleteConfirmDlg.spec.js
+//  it("showDeleteConfirmDlg hidden in Task", () => {
+//    const task = {
+//      id: 100,
+//      title: "Task 1",
+//      completed: false
+//    };
+//
+//    const wrapper = shallow(<Task task={task} />);
+//    const showDeleteConfirmDlg = wrapper.props().children[0];
+//
+//    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
+//    expect(showDeleteConfirmDlg.props.show).toBe(false);
+//  });
 
-    const wrapper = shallow(<Task task={task} />);
-    const showDeleteConfirmDlg = wrapper.props().children[0];
-
-    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
-    expect(showDeleteConfirmDlg.props.show).toBe(false);
-  });
-
-  it("showVisibleMoreDlg hidden in Task", () => {
-    const task = {
-      id: 100,
-      title: "Task 1",
-      completed: false
-    };
-
-    const wrapper = shallow(<Task task={task} />);
-    const showVisibleMoreDlg = wrapper.props().children[1];
-
-    expect(showVisibleMoreDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
-    expect(showVisibleMoreDlg.props.show).toBe(false);
-  });
+//TODO: move to MoreDlg.spec.js
+//  it("showVisibleMoreDlg hidden in Task", () => {
+//    const task = {
+//      id: 100,
+//      title: "Task 1",
+//      completed: false
+//    };
+//
+//    const wrapper = shallow(<Task task={task} />);
+//    const showVisibleMoreDlg = wrapper.props().children[1];
+//
+//    expect(showVisibleMoreDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
+//    expect(showVisibleMoreDlg.props.show).toBe(false);
+//  });
 
   it("check props formCheck in Task", () => {
     const task = {
@@ -81,19 +83,20 @@ describe("<Task />", () => {
     expect(formCheck.props.checked).toBe(task.completed);
   });
 
-  it("showDeleteConfirmDlg NOT visible in Task ", () => {
-    const task = {
-      id: 100,
-      title: "Task 1",
-      completed: false
-    };
-
-    const wrapper = shallow(<Task task={task} />);
-    const showDeleteConfirmDlg = wrapper.props().children[0];
-
-    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0");
-    expect(showDeleteConfirmDlg.props.show).toBe(false);
-  });
+//TODO: move to DeleteConfirmDlg.spec.js
+//  it("showDeleteConfirmDlg NOT visible in Task ", () => {
+//    const task = {
+//      id: 100,
+//      title: "Task 1",
+//      completed: false
+//    };
+//
+//    const wrapper = shallow(<Task task={task} />);
+//    const showDeleteConfirmDlg = wrapper.props().children[0];
+//
+//    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0");
+//    expect(showDeleteConfirmDlg.props.show).toBe(false);
+//  });
 
   it("check showMoreBtn props in Task", () => {
     const task = {

@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { Form, ListGroup, Modal, Button } from "react-bootstrap";
 import { createToggleTaskAction, createRemoveTaskAction }  from "../store/actions";
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
+import { DeleteConfirmDlg } from "./DeleteConfirmDlg";
 //import {PropTypes} from "prop-types";
 
 const Task = ({ task }) => {
@@ -37,40 +40,9 @@ const Task = ({ task }) => {
     };
   }
 
-  const handleCancelDeleteConfirmDlg = (task) => {
-    console.log("before handleCloseDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
-    setShowDeleteConfirmDlg(false);
-    console.log("after handleCloseDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
-    console.log("delete task id=" + id);
-  }
-
-  const handleConfirmDeleteConfirmDlg = (task) => {
-    console.log("before handleConfirmDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
-    setShowDeleteConfirmDlg(false);
-    console.log("after  handleConfirmDeleteConfirmDlg showDeleteConfirmDlg=" + showDeleteConfirmDlg);
-    console.log("delete task id=" + id);
-
-    if(id < 0) {
-      console.log("i<0 delete task id=" + id);
-    } else {
-      console.log("delete task id=" + id);
-      // delete task
-      dispatch(createRemoveTaskAction(id));
-    };
-  }
-
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
-      <Modal show={showDeleteConfirmDlg} className="rounded-0">
-        <Modal.Header closeButton>
-          <Modal.Title>Удалить?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
-        <Modal.Footer>
-            <Button className="col-2" variant="primary" onClick={handleConfirmDeleteConfirmDlg}>Да</Button>
-            <Button className="col-2" variant="secondary" onClick={handleCancelDeleteConfirmDlg}>Нет</Button>
-        </Modal.Footer>
-      </Modal>
+      <DeleteConfirmDlg id={id} title={title} />
 
       <Modal show={showVisibleMoreDlg} className="rounded-0">
         <Modal.Header closeButton>
