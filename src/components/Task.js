@@ -6,7 +6,8 @@ import { useState } from 'react';
 //import {PropTypes} from "prop-types";
 
 const Task = ({ task }) => {
-  console.log("props=", task);
+// for testing use props uncomment
+//  console.log("props=", task);
   const { id, title, completed } = {...task};
   const dispatch = useDispatch();
 

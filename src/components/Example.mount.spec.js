@@ -20,8 +20,8 @@ describe("Mount <Task />", () => {
     };
 
     const wrapper = mount(<Task task={task} />); // MOUNT!!!
-
-    console.log(wrapper.debug()); // for demo mount
+// for testing use props uncomment line below
+//    console.log(wrapper.debug()); // for demo mount
 
     const taskView = toJson(wrapper);
 
