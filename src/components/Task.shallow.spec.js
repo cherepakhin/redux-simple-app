@@ -46,13 +46,16 @@ describe("<Task />", () => {
     };
 
     const wrapper = shallow(<Task task={task} />);
-//    console.log(wrapper);
-    const showDeleteConfirmDlg = wrapper.props().children[0];
-//    console.log(showDeleteConfirmDlg);
-    expect(showDeleteConfirmDlg.props).toEqual({ id: 100, title: 'Task 1', visible: false });
-//
-//    expect(showDeleteConfirmDlg.props["className"]).toEqual("rounded-0"); // dlg have className="rounded-0"
-//    expect(showDeleteConfirmDlg.type).toEqual("DeleteConfirmDlg");
+    expect(wrapper.props().children[0].type.displayName).toEqual("Modal");
+
+    expect(wrapper.props().children[1].props).toEqual(
+        expect.objectContaining(
+        {
+            id: 100,
+            title: "Task 1",
+            visible: false,
+        })
+    );
   });
 
 //TODO: move to MoreDlg.spec.js
