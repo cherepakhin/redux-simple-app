@@ -53,10 +53,15 @@ describe("DeleteConfirmDlg test", () => {
     expect(wrapper.find(Modal.Footer)).toHaveLength(1);
 
 // https://remarkablemark.org/blog/2017/05/17/testing-react-modal/
-    expect(wrapper.find(Modal).prop('show')).toBe(true);
-    expect(wrapper.find(Modal).prop('className')).toBe("rounded-0");
-    expect(wrapper.find(Modal).text()).toBe("Удалить?{id: 100, title: 'Task 1'}?ДаНет");
-    expect(wrapper.find(Modal.Title).text()).toBe("Удалить?");
+    expect(wrapper.find(Modal).prop('show')).toBe(true);    // props.show
+    expect(wrapper.find(Modal).prop('className')).toBe("rounded-0"); // props.rounded
+    expect(wrapper.find(Modal).text()).toBe("Удалить?{id: 100, title: 'Task 1'}?ДаНет"); // body
+
+    expect(wrapper.find(Modal.Title).text()).toBe("Удалить?"); // header
+    expect(wrapper.find(Modal.Body).text()).toBe("{id: 100, title: 'Task 1'}?"); // header
+    expect(wrapper.find(Modal.Footer).text()).toBe("ДаНет"); // footer
+
+    expect(wrapper.find(Button)).toHaveLength(2);
   });
 
 });
