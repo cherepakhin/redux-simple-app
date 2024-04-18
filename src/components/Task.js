@@ -26,8 +26,10 @@ const Task = ({ task }) => {
   }
 
   const showDeleteConfirmDlg = (task) => {
-    console.log("before handleDeleteConfirmDlg visibleDeleteConfirmDlg=" + visibleDeleteConfirmDlg);
-    console.log("before handleDeleteConfirmDlg task=" + task);
+    console.log("before handleDeleteConfirmDlg visibleDeleteConfirmDlg:" );
+    console.log(visibleDeleteConfirmDlg);
+    console.log("before handleDeleteConfirmDlg task:");
+    console.log(task);
     // в state устанавливается состояние диалога - visible=true через переменную visibleDeleteConfirmDlg.
     // из usestate() через переменную visibleDeleteConfirmDlg  приходит новое состояние,
     // видимость компоненты DeleteConfirmDlg "привязана" к переменной visibleDeleteConfirmDlg
