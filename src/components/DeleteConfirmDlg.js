@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Modal, Button } from "react-bootstrap";
 
-
+// Этот диалог никак не связан с Redux.
+// Присвоение параметров, управление видимостью и реакция на нажатие кнопок сделано снаружи в компоненте Task.js
 const DeleteConfirmDlg = ({id, title, visible, fnTaskDeleteConfirm, fnTaskDeleteCancel}) => {
 
   const handleCancel = () => {

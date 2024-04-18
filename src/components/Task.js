@@ -28,40 +28,28 @@ const Task = ({ task }) => {
   const showDeleteConfirmDlg = (task) => {
     console.log("before handleDeleteConfirmDlg visibleDeleteConfirmDlg=" + visibleDeleteConfirmDlg);
     console.log("before handleDeleteConfirmDlg task=" + task);
-//TODO: uncomment after testing
-//    if(id < 0) {
-//      console.log("error id < 0");
-//      return
-//    };
-
     // в state устанавливается состояние диалога - visible=true через переменную visibleDeleteConfirmDlg.
     // из usestate() через переменную visibleDeleteConfirmDlg  приходит новое состояние,
     // видимость компоненты DeleteConfirmDlg "привязана" к переменной visibleDeleteConfirmDlg
 
-    // DeleteConfirmDlg ничего не знает о Redux, store, state. ВСЕ управление  сделанов Task.js.
+    // DeleteConfirmDlg ничего не знает о Redux, store, state. ВСЕ управление  сделано в Task.js.
 
     // DeleteConfirmDlg ДОЛЖЕН БЫТЬ встроен в HTML(!!!) страницы Task.js.
     // и НЕ может существовать как совершенно независимый компонент (это не windows).
     setVisibleDeleteConfirmDlg(true);
 
-    // Само удаление задачи (TASK) делать в компоненте Task.js, НЕ в диалоге.
+    // Само удаление задачи (TASK) делать в этой компоненте (Task.js), НЕ в диалоге.
     // КАК принять ответ от диалога? Через ПЕРЕДАЧУ функции удаления (handleTaskDeleteConfirm) в диалог.
     //      <DeleteConfirmDlg id={id} title={title} visible={visibleDeleteConfirmDlg}
     //        fnTaskDeleteConfirm={handleTaskDeleteConfirm}
     //        fnTaskDeleteCancel={handleTaskDeleteCancel}
     //      />
-
-//
-//    let taskAction = {...task, visible: true};
-//    let showDeleteConfirmDlgAction = actions.createShowDeleteConfirmDlgAction({ taskAction });
-//    // delete task
-//    dispatch(showDeleteConfirmDlgAction);
   }
 
   const handleTaskDeleteConfirm = (id) => {
     console.log("handleTaskDeleteConfirm id=" + id);
     setVisibleDeleteConfirmDlg(false);
-    //TODO: realize delete task
+    // dispatch to REST API!!!
     dispatch(actions.createRemoveTaskAction(id));
   }
 
@@ -70,8 +58,8 @@ const Task = ({ task }) => {
     setVisibleDeleteConfirmDlg(false);
   }
 
-  // Example inline dialog - MoreDlg. Example separate component - DeleteConfirmDlg
-  // Example dialog as separate component - DeleteConfirmDlg
+  // MoreDlg - пример диалога, встроенного в компоненту Task.js
+  // DeleteConfirmDlg.js - пример диалога в отдельной компоненте
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
       <Modal show={visibleMoreDlg} className="rounded-0">
