@@ -29,6 +29,7 @@ describe("DeleteConfirmDlg test", () => {
 
   });
 
+//TODO: ОЧЕНЬ МНОГО проверок. Разделить shallow тесты
   it("showDeleteConfirmDlg check structure with SHALLOW", () => {
     const task = {
       id: 100,
