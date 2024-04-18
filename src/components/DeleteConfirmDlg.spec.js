@@ -1,9 +1,8 @@
 import React from "react";
 import toJson from "enzyme-to-json";
 import { shallow, mount } from "enzyme";
-import { Modal, Button } from "react-bootstrap";
-
 import DeleteConfirmDlg from "./DeleteConfirmDlg";
+import { Modal, Button, ModalFooter } from "react-bootstrap";
 
 jest.mock('react-redux', () => ({
    useDispatch: jest.fn(),
@@ -28,12 +27,6 @@ describe("DeleteConfirmDlg test", () => {
 
     expect(dlg.node.props).toEqual(task);
 
-//    expect(dlg.children[1].type).toBe("ModalBody");
-//    expect(dlg.children[2].type).toBe("ModalFooter");
-//    expect(dlg.children[1].node.props.children).toBe("{id: 100, title: 'Task 1'}?");
-//
-//    const body = wrapper.find("[forwardedRef]");
-//    console.log(body);
   });
 
   it("showDeleteConfirmDlg check structure with SHALLOW", () => {
@@ -45,13 +38,24 @@ describe("DeleteConfirmDlg test", () => {
 
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
-    console.log(dlg);
-    console.log(dlg.node.props);
+//    console.log(dlg);
+//    console.log(dlg.node.props);
     expect(dlg.children[0].type).toBe("ModalHeader");
+    expect(dlg.children[0].props).toStrictEqual( {"closeButton": true, "closeLabel": "Close"});
+    expect(dlg.children[0].props).toEqual( {"closeButton": true, "closeLabel": "Close"});
     expect(dlg.children[1].type).toBe("ModalBody");
+    expect(dlg.children[1].node.props.children).toEqual("{id: 100, title: 'Task 1'}?"); // json as string!!!
     expect(dlg.children[2].type).toBe("ModalFooter");
 
-//    expect(dlg.node.props).toEqual(task);
+    expect(wrapper.find(Modal.Header)).toHaveLength(1);
+    expect(wrapper.find(Modal.Body)).toHaveLength(1);
+    expect(wrapper.find(Modal.Footer)).toHaveLength(1);
+
+// https://remarkablemark.org/blog/2017/05/17/testing-react-modal/
+    expect(wrapper.find(Modal).prop('show')).toBe(true);
+    expect(wrapper.find(Modal).prop('className')).toBe("rounded-0");
+    expect(wrapper.find(Modal).text()).toBe("Удалить?{id: 100, title: 'Task 1'}?ДаНет");
+    expect(wrapper.find(Modal.Title).text()).toBe("Удалить?");
   });
 
 });

@@ -273,3 +273,7 @@ File sizes after gzip:
 Содержимое build/ скопировать на сервер v.perm.ru в папку /var/www/redux_simple_app/ 
 
 Доступ к приложению: http://v.perm.ru/redux_simple_app/index.html
+
+### Тестирование компонентов
+
+[https://remarkablemark.org/blog/2017/05/17/testing-react-modal/](https://remarkablemark.org/blog/2017/05/17/testing-react-modal/)
