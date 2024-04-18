@@ -62,6 +62,7 @@ const Task = ({ task }) => {
     console.log("handleTaskDeleteConfirm id=" + id);
     setVisibleDeleteConfirmDlg(false);
     //TODO: realize delete task
+    dispatch(actions.createRemoveTaskAction(id));
   }
 
   const handleTaskDeleteCancel = () => {
@@ -95,6 +96,7 @@ const Task = ({ task }) => {
         checked={completed}
         onChange={ () => dispatch(createToggleTaskAction(id)) }
       />
+
       <div className="list-group-item-actions" align="left">
         <span onClick={() => showMoreDlg(id)}>Подробнее</span>
       </div>

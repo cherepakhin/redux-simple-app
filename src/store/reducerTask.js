@@ -25,7 +25,11 @@ export default function reducerTask(state = state0, action) {
   console.log(state);
   switch (action.type) {
     case actions.TASK_ADD:
-      // добавляет данные в state из action.payload
+      //TODO: add rest request
+      //TODO: and refresh all tasks
+
+      // Пример простого добавление задачи в state из action.payload
+      // ТУТ делается изменение state
       return [...state, {
         id: ++lastId,
         title: action.payload.title,
@@ -42,8 +46,10 @@ export default function reducerTask(state = state0, action) {
       });
 
     case actions.TASK_REMOVE:
-      console.log("actions.TASK_REMOVE");
+      console.log("actions.TASK_REMOVE. payload:");
       console.log(action.payload);
+      //TODO: add rest request
+      //TODO: and refresh all tasks
       return state.filter(task => action.payload.id !== task.id);
 
     default:
