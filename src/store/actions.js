@@ -17,3 +17,9 @@ export const createRemoveTaskAction = id => ({
   type: actionTypes.TASK_REMOVE,
   payload: { id }
 })
+
+export const createShowDeleteConfirmDlgAction = task => ({
+  type: actionTypes.SHOW_DELETE_CONFIRM_DLG,
+  payload: { task }
+})
+

@@ -5,6 +5,7 @@ import { createToggleTaskAction, }  from "../store/actions";
 
 import DeleteConfirmDlg from "./DeleteConfirmDlg";
 import PropTypes from "prop-types";
+import * as actions from "../store/actions";
 
 const Task = ({ task }) => {
 // for testing use props uncomment
@@ -12,39 +13,63 @@ const Task = ({ task }) => {
   const { id, title, completed } = {...task};
   const dispatch = useDispatch();
 
-  const [visibleDeleteConfirmDlg, setVisibleDeleteConfirmDlg] = useState(false);
   const [visibleMoreDlg, setVisibleMoreDlg] = useState(false);
+  const [visibleDeleteConfirmDlg, setVisibleDeleteConfirmDlg] = useState(false);
 
 // show more dialog
-  const handleShowMore= (id) => {
+  const showMoreDlg= (id) => {
     setVisibleMoreDlg(true);
   }
 
-  const handleShowMoreDlgClose = () => {
+  const showMoreDlgClose = () => {
     setVisibleMoreDlg(false);
   }
 
-  const handleDeleteConfirmDlg = (task) => {
-    console.log("before handleShowDeleteConfirmDlg visibleDeleteConfirmDlg=" + visibleDeleteConfirmDlg);
+  const showDeleteConfirmDlg = (task) => {
+    console.log("before handleDeleteConfirmDlg visibleDeleteConfirmDlg=" + visibleDeleteConfirmDlg);
+    console.log("before handleDeleteConfirmDlg task=" + task);
+//TODO: uncomment after testing
+//    if(id < 0) {
+//      console.log("error id < 0");
+//      return
+//    };
     setVisibleDeleteConfirmDlg(true);
-    if(id < 0) {
-      return
-    };
+    let taskAction = {...task, visible: true};
+    let showDeleteConfirmDlgAction = actions.createShowDeleteConfirmDlgAction({ taskAction });
+
+    dispatch(showDeleteConfirmDlgAction);
+
+    console.log("after set handleDeleteConfirmDlg visibleDeleteConfirmDlg=" + visibleDeleteConfirmDlg);
   }
 
+  const handleTaskDeleteConfirm = (id) => {
+    console.log("handleTaskDeleteConfirm id=" + id);
+    setVisibleDeleteConfirmDlg(false);
+  }
+
+  const handleTaskDeleteCancel = () => {
+    console.log("handleTaskDeleteCancel" );
+    setVisibleDeleteConfirmDlg(false);
+  }
+
+  // Example inline dialog - MoreDlg. Example separate component - DeleteConfirmDlg
+  // Example dialog as separate component - DeleteConfirmDlg
   return (
     <ListGroup.Item className={completed && 'task-completed'}>
-      <DeleteConfirmDlg id={id} title={title} visible={visibleDeleteConfirmDlg} />
-
       <Modal show={visibleMoreDlg} className="rounded-0">
         <Modal.Header closeButton>
           <Modal.Title>Подробнее о задаче</Modal.Title>
         </Modal.Header>
         <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
         <Modal.Footer>
-            <Button className="col-2" variant="primary" onClick={handleShowMoreDlgClose}>Закрыть</Button>
+            <Button className="col-2" variant="primary" onClick={showMoreDlgClose}>Закрыть</Button>
         </Modal.Footer>
       </Modal>
+
+      <DeleteConfirmDlg id={id} title={title} visible={visibleDeleteConfirmDlg}
+        fnTaskDeleteConfirm={handleTaskDeleteConfirm}
+        fnTaskDeleteCancel={handleTaskDeleteCancel}
+      />
 
       <Form.Check
         id={id}
@@ -54,10 +79,10 @@ const Task = ({ task }) => {
         onChange={ () => dispatch(createToggleTaskAction(id)) }
       />
       <div className="list-group-item-actions" align="left">
-        <span onClick={() => handleShowMore(id)}>Подробнее</span>
+        <span onClick={() => showMoreDlg(id)}>Подробнее</span>
       </div>
       <div className="list-group-item-actions" align="center">
-        <span onClick={() => handleDeleteConfirmDlg(id)}>Удалить</span>
+        <span onClick={() => showDeleteConfirmDlg(id)}>Удалить</span>
       </div>
     </ListGroup.Item>
   )
