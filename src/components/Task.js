@@ -33,18 +33,27 @@ const Task = ({ task }) => {
 //      console.log("error id < 0");
 //      return
 //    };
+
+    // в state устанавливается состояние диалога - visible=true через переменную visibleDeleteConfirmDlg.
+    // из usestate() через переменную visibleDeleteConfirmDlg  приходит новое состояние,
+    // видимость компоненты DeleteConfirmDlg "привязана" к переменной visibleDeleteConfirmDlg
+
+    // DeleteConfirmDlg ничего не знает о Redux, store, state. Все управление  сделанов Task.js.
+
+    // DeleteConfirmDlg ДОЛЖЕН БЫТЬ встроен в HTML(!!!) страницы Task.js.
+    // и существовать как совершенно независимый компонент не может (это не windows).
     setVisibleDeleteConfirmDlg(true);
-    let taskAction = {...task, visible: true};
-    let showDeleteConfirmDlgAction = actions.createShowDeleteConfirmDlgAction({ taskAction });
-
-    dispatch(showDeleteConfirmDlgAction);
-
-    console.log("after set handleDeleteConfirmDlg visibleDeleteConfirmDlg=" + visibleDeleteConfirmDlg);
+//
+//    let taskAction = {...task, visible: true};
+//    let showDeleteConfirmDlgAction = actions.createShowDeleteConfirmDlgAction({ taskAction });
+//    // delete task
+//    dispatch(showDeleteConfirmDlgAction);
   }
 
   const handleTaskDeleteConfirm = (id) => {
     console.log("handleTaskDeleteConfirm id=" + id);
     setVisibleDeleteConfirmDlg(false);
+    //TODO: realize delete task
   }
 
   const handleTaskDeleteCancel = () => {
