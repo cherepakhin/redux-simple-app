@@ -38,11 +38,19 @@ const Task = ({ task }) => {
     // из usestate() через переменную visibleDeleteConfirmDlg  приходит новое состояние,
     // видимость компоненты DeleteConfirmDlg "привязана" к переменной visibleDeleteConfirmDlg
 
-    // DeleteConfirmDlg ничего не знает о Redux, store, state. Все управление  сделанов Task.js.
+    // DeleteConfirmDlg ничего не знает о Redux, store, state. ВСЕ управление  сделанов Task.js.
 
     // DeleteConfirmDlg ДОЛЖЕН БЫТЬ встроен в HTML(!!!) страницы Task.js.
-    // и существовать как совершенно независимый компонент не может (это не windows).
+    // и НЕ может существовать как совершенно независимый компонент (это не windows).
     setVisibleDeleteConfirmDlg(true);
+
+    // Само удаление задачи (TASK) делать в компоненте Task.js, НЕ в диалоге.
+    // КАК принять ответ от диалога? Через ПЕРЕДАЧУ функции удаления (handleTaskDeleteConfirm) в диалог.
+    //      <DeleteConfirmDlg id={id} title={title} visible={visibleDeleteConfirmDlg}
+    //        fnTaskDeleteConfirm={handleTaskDeleteConfirm}
+    //        fnTaskDeleteCancel={handleTaskDeleteCancel}
+    //      />
+
 //
 //    let taskAction = {...task, visible: true};
 //    let showDeleteConfirmDlgAction = actions.createShowDeleteConfirmDlgAction({ taskAction });

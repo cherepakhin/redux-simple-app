@@ -32,8 +32,8 @@ DeleteConfirmDlg.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   visible: PropTypes.bool.isRequired,
-  fnConfirmDelete: PropTypes.func.isRequired,
-  fnCancelDelete: PropTypes.func.isRequired
+  fnTaskDeleteConfirm: PropTypes.func.isRequired,
+  fnTaskDeleteCancel: PropTypes.func.isRequired
 }
 
 export default DeleteConfirmDlg;
