@@ -17,9 +17,9 @@ const DeleteConfirmDlg = ({id, title, visible, fnTaskDeleteConfirm, fnTaskDelete
   return (
       <Modal show={visible} className="rounded-0">
         <Modal.Header closeButton>
-          <Modal.Title>Удалить?</Modal.Title>
+          <Modal.Title id="header">Удалить?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
+        <Modal.Body id="body">{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
         <Modal.Footer>
             <Button id="ok" className="col-2" variant="primary" onClick={handleConfirm}>Да</Button>
             <Button id="cancel" className="col-2" variant="secondary" onClick={handleCancel}>Нет</Button>
