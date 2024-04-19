@@ -22,6 +22,7 @@ const Task = ({ task }) => {
 // show more dialog
   const openMoreDlg= (id) => {
     setVisibleMoreDlg(true);
+//    setVisibleTask0NotDeleteDlg(true);
   }
 
   const closeMoreDlg = () => {
@@ -29,7 +30,7 @@ const Task = ({ task }) => {
   }
 
   const openDeleteConfirmDlg = (task) => {
-    if(task.id === -1) {
+    if(task === -1) {
         console.log("task.id === -1");
         //TODO: show -1 not deleted
         setVisibleTask0NotDeleteDlg(true);
@@ -69,7 +70,7 @@ const Task = ({ task }) => {
     dispatch(actions.createRemoveTaskAction(id));
   }
 
-  const handleCloseTask0NotDeleteDlg = () => {
+  const closeTask0NotDeleteDlg = () => {
     setVisibleTask0NotDeleteDlg(false);
   }
 
@@ -93,7 +94,7 @@ const Task = ({ task }) => {
       />
 
       <Task0NotDeleteDlg visible={visibleTask0NotDeleteDlg}
-        fnTask0NotDeleteDlgClose={handleCloseTask0NotDeleteDlg}
+        fnTask0NotDeleteDlgClose={closeTask0NotDeleteDlg}
       />
 
       <Form.Check

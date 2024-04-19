@@ -4,7 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 
 // Этот компонент никак не связан с Redux.
 // Присвоение параметров, управление видимостью и реакция на нажатие кнопок сделано снаружи в компоненте Task.js
-const Task0NotDeleteDlg = (visible, fnTask0NotDeleteDlgClose) => {
+const Task0NotDeleteDlg = ({visible, fnTask0NotDeleteDlgClose}) => {
 
   const handleClose = () => {
     console.log(visible);
@@ -12,7 +12,7 @@ const Task0NotDeleteDlg = (visible, fnTask0NotDeleteDlgClose) => {
   }
 
   return (
-      <Modal show={false} className="rounded-0">
+      <Modal show={visible} className="rounded-0">
         <Modal.Header closeButton>
           <Modal.Title id="header">Внимание!</Modal.Title>
         </Modal.Header>
