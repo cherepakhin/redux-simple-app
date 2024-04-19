@@ -31,7 +31,7 @@ describe("DeleteConfirmDlg test", () => {
 
   });
 
-//TODO: ОЧЕНЬ МНОГО проверок. Разделить shallow тесты
+//В этом тесте ОЧЕНЬ МНОГО проверок. Ниже разделено на отдельные тесты. Оставил так.
   it("showDeleteConfirmDlg check ALL structure with SHALLOW", () => {
     const task = {
       id: 100,
@@ -43,8 +43,6 @@ describe("DeleteConfirmDlg test", () => {
 
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
-//    console.log(dlg);
-//    console.log(dlg.node.props);
     expect(dlg.children[0].type).toBe("ModalHeader");
     expect(dlg.children[0].props).toStrictEqual( {"closeButton": true, "closeLabel": "Close"});
     expect(dlg.children[0].props).toEqual( {"closeButton": true, "closeLabel": "Close"});
@@ -137,5 +135,15 @@ describe("DeleteConfirmDlg test", () => {
 // test by selector
     expect(wrapper.find(Modal.Body)).toHaveLength(1);
     expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?");
-    });
+  });
+
+  it("showDeleteConfirmDlg check body with props in component", () => {
+    const wrapper = shallow(<DeleteConfirmDlg id='100' title="Task 1" visible="true"/>);
+    const dlg = toJson(wrapper);
+
+    expect(dlg.children[1].type).toBe("ModalBody"); // place in dlg. index must be 1. body after header.
+// test by selector
+    expect(wrapper.find(Modal.Body)).toHaveLength(1);
+    expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?");
+  });
 });
