@@ -34,7 +34,7 @@ describe("<Task />", () => {
     const taskView = toJson(wrapper);
 
     expect(taskView.type).toEqual("ListGroupItem");
-    expect(taskView.children.length).toBe(5); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить
+    expect(taskView.children.length).toBe(6); // showDeleteConfirmDlg, showVisibleMoreDlg, Form.Check, Подробнее, Удалить, dlg task -1
   });
 
 //TODO: move to DeleteConfirmDlg.spec.js

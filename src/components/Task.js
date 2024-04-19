@@ -4,6 +4,8 @@ import { Form, ListGroup, Modal, Button } from "react-bootstrap";
 import { createToggleTaskAction, }  from "../store/actions";
 
 import DeleteConfirmDlg from "./DeleteConfirmDlg";
+import Task0NotDeleteDlg from "./Task0NotDeleteDlg";
+
 import PropTypes from "prop-types";
 import * as actions from "../store/actions";
 
@@ -15,17 +17,24 @@ const Task = ({ task }) => {
 
   const [visibleMoreDlg, setVisibleMoreDlg] = useState(false);
   const [visibleDeleteConfirmDlg, setVisibleDeleteConfirmDlg] = useState(false);
+  const [visibleTask0NotDeleteDlg, setVisibleTask0NotDeleteDlg] = useState(false);
 
 // show more dialog
-  const showMoreDlg= (id) => {
+  const openMoreDlg= (id) => {
     setVisibleMoreDlg(true);
   }
 
-  const showMoreDlgClose = () => {
+  const closeMoreDlg = () => {
     setVisibleMoreDlg(false);
   }
 
-  const showDeleteConfirmDlg = (task) => {
+  const openDeleteConfirmDlg = (task) => {
+    if(task.id === -1) {
+        console.log("task.id === -1");
+        //TODO: show -1 not deleted
+        setVisibleTask0NotDeleteDlg(true);
+        return
+    }
     console.log("before handleDeleteConfirmDlg visibleDeleteConfirmDlg:" );
     console.log(visibleDeleteConfirmDlg);
     console.log("before handleDeleteConfirmDlg task:");
@@ -48,16 +57,20 @@ const Task = ({ task }) => {
     //      />
   }
 
-  const handleTaskDeleteConfirm = (id) => {
-    console.log("handleTaskDeleteConfirm id=" + id);
+  const cancelDeleteConfirmDlg = () => {
+    console.log("handleTaskDeleteCancel" );
+    setVisibleDeleteConfirmDlg(false);
+  }
+
+  const confirmDeleteConfirmDlg = (id) => {
+    console.log("confirmDeleteConfirmDlg id=" + id);
     setVisibleDeleteConfirmDlg(false);
     // dispatch to REST API!!!
     dispatch(actions.createRemoveTaskAction(id));
   }
 
-  const handleTaskDeleteCancel = () => {
-    console.log("handleTaskDeleteCancel" );
-    setVisibleDeleteConfirmDlg(false);
+  const handleCloseTask0NotDeleteDlg = () => {
+    setVisibleTask0NotDeleteDlg(false);
   }
 
   // MoreDlg - пример диалога, встроенного в компоненту Task.js
@@ -68,15 +81,19 @@ const Task = ({ task }) => {
         <Modal.Header closeButton>
           <Modal.Title>Подробнее о задаче</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{"{id: "+id+", title: '"+title+"'}?"}</Modal.Body>
+        <Modal.Body>{"JSON: {id: "+id+", title: '"+title+"'}"}</Modal.Body>
         <Modal.Footer>
-            <Button className="col-2" variant="primary" onClick={showMoreDlgClose}>Закрыть</Button>
+            <Button className="col-2" variant="primary" onClick={closeMoreDlg}>Закрыть</Button>
         </Modal.Footer>
       </Modal>
 
       <DeleteConfirmDlg id={id} title={title} visible={visibleDeleteConfirmDlg}
-        fnTaskDeleteConfirm={handleTaskDeleteConfirm}
-        fnTaskDeleteCancel={handleTaskDeleteCancel}
+        fnTaskDeleteConfirm={(id) => confirmDeleteConfirmDlg(id)}
+        fnTaskDeleteCancel={cancelDeleteConfirmDlg}
+      />
+
+      <Task0NotDeleteDlg visible={visibleTask0NotDeleteDlg}
+        fnTask0NotDeleteDlgClose={handleCloseTask0NotDeleteDlg}
       />
 
       <Form.Check
@@ -88,10 +105,10 @@ const Task = ({ task }) => {
       />
 
       <div className="list-group-item-actions" align="left">
-        <span onClick={() => showMoreDlg(id)}>Подробнее</span>
+        <span onClick={() => openMoreDlg(id)}>Подробнее</span>
       </div>
       <div className="list-group-item-actions" align="center">
-        <span onClick={() => showDeleteConfirmDlg(id)}>Удалить</span>
+        <span onClick={() => openDeleteConfirmDlg(id)}>Удалить</span>
       </div>
     </ListGroup.Item>
   )

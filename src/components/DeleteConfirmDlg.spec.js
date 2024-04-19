@@ -21,6 +21,7 @@ describe("DeleteConfirmDlg test", () => {
     //  const wrapper = shallow(<DeleteConfirmDlg id='100' title="Task 1"/>);
     const wrapper = mount(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
+    // demo log
     //    console.log(dlg);
     //    console.log(dlg.node.props);
     expect(dlg.children[0].type).toBe("Modal");
