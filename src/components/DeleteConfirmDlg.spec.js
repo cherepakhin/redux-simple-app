@@ -83,13 +83,12 @@ describe("DeleteConfirmDlg test", () => {
 
     expect(dlg.children[0].type).toBe("ModalHeader");
     expect(dlg.children[0].props).toEqual( {"closeButton": true, "closeLabel": "Close"});
-    expect(dlg.children[0].props).toEqual( {"closeButton": true, "closeLabel": "Close"});
 
     expect(wrapper.find(Modal.Header)).toHaveLength(1);
     expect(wrapper.find(Modal.Title).text()).toBe("Удалить?"); // header
 
 // test by selector
-    expect(wrapper.find({ id: "header" }).text()).toBe("Удалить?");
+    expect(wrapper.find({ id: "header" }).text()).toBe("Удалить?"); // by selector
   });
 
   it("showDeleteConfirmDlg check footer", () => {
@@ -102,10 +101,9 @@ describe("DeleteConfirmDlg test", () => {
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
 
-    expect(wrapper.find(Modal.Footer)).toHaveLength(1);
-
+    expect(wrapper.find(Modal.Footer)).toHaveLength(1); // find by Modal.Footer
+    expect(wrapper.find(ModalFooter)).toHaveLength(1); // find by ModalFooter
     expect(dlg.children[2].type).toBe("ModalFooter");
-
 // test by selector
     expect(wrapper.find({ id: "ok" }).text()).toBe("Да"); // by selector
     expect(wrapper.find({ id: "cancel" }).text()).toBe("Нет"); // by selector
@@ -123,6 +121,9 @@ describe("DeleteConfirmDlg test", () => {
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
 
-    expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?"); // by selector
+    expect(dlg.children[1].type).toBe("ModalBody");
+// test by selector
+    expect(wrapper.find(Modal.Body)).toHaveLength(1);
+    expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?");
     });
 });
