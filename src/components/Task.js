@@ -105,7 +105,7 @@ const Task = ({ task }) => {
         onChange={ () => dispatch(createToggleTaskAction(id)) }
       />
 
-      <div className="list-group-item-actions" align="left">
+      <div id="idMoreBtn" className="list-group-item-actions" align="left">
         <span onClick={() => openMoreDlg(id)}>Подробнее</span>
       </div>
       <div className="list-group-item-actions" align="center">

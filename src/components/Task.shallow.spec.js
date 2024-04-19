@@ -81,7 +81,7 @@ describe("<Task />", () => {
     };
 
     const wrapper = shallow(<Task task={task} />);
-    const formCheck = wrapper.props().children[2];
+    const formCheck = wrapper.props().children[3];
 
     expect(formCheck.props.id).toBe(task.id);
     expect(formCheck.props.type).toBe("checkbox");
@@ -112,7 +112,7 @@ describe("<Task />", () => {
     };
 
     const wrapper = shallow(<Task task={task} />);
-    const showMoreBtn = wrapper.props().children[3];
+    const showMoreBtn = wrapper.props().children[4];
 
     expect(showMoreBtn.props["className"]).toEqual("list-group-item-actions");
     expect(showMoreBtn.props["align"]).toBe("left"); // align in cell
@@ -128,7 +128,7 @@ describe("<Task />", () => {
 
     const wrapper = shallow(<Task task={task} />);
 
-    const deleteBtn = wrapper.props().children[4];
+    const deleteBtn = wrapper.props().children[5];
 //    console.log(wrapper.props());
     expect(deleteBtn.props["className"]).toBe("list-group-item-actions");
     expect(deleteBtn.props["align"]).toBe("center"); // align in cell

@@ -12,7 +12,7 @@ const Task0NotDeleteDlg = ({visible, fnTask0NotDeleteDlgClose}) => {
   }
 
   return (
-      <Modal show={visible} className="rounded-0">
+      <Modal id="task0NotDeleteDlg" show={visible} className="rounded-0">
         <Modal.Header closeButton>
           <Modal.Title id="header">Внимание!</Modal.Title>
         </Modal.Header>
