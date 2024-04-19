@@ -138,10 +138,11 @@ describe("DeleteConfirmDlg test", () => {
   });
 
   it("showDeleteConfirmDlg check body with props in component", () => {
+    // NOT  <DeleteConfirmDlg {...props}, BUT <DeleteConfirmDlg id='100' title="Task 1" visible="true"/>
     const wrapper = shallow(<DeleteConfirmDlg id='100' title="Task 1" visible="true"/>);
     const dlg = toJson(wrapper);
 
-    expect(dlg.children[1].type).toBe("ModalBody"); // place in dlg. index must be 1. body after header.
+    expect(dlg.children[1].type).toBe("ModalBody"); // place in dlg. index must be 1, body after header.
 // test by selector
     expect(wrapper.find(Modal.Body)).toHaveLength(1);
     expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?");
