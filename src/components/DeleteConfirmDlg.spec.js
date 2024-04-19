@@ -61,6 +61,9 @@ describe("DeleteConfirmDlg test", () => {
     expect(wrapper.find(Modal.Body).text()).toBe("{id: 100, title: 'Task 1'}?"); // header
     expect(wrapper.find(Modal.Footer).text()).toBe("ДаНет"); // footer
 
+    expect(wrapper.find({ id: "ok" }).text()).toBe("Да"); // by selector
+    expect(wrapper.find({ id: "cancel" }).text()).toBe("Нет"); // by selector
+
     expect(wrapper.find(Button)).toHaveLength(2);
   });
 
