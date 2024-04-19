@@ -15,6 +15,8 @@ describe("DeleteConfirmDlg test", () => {
       id: 100,
       title: "Task 1",
       visible: true,
+      fnTaskDeleteConfirm: jest.fn(),
+      fnTaskDeleteCancel: jest.fn()
     };
 //    const wrapper = shallow(<DeleteConfirmDlg id='100' title="Task 1"/>);
     const wrapper = mount(<DeleteConfirmDlg {...task} />);
@@ -35,6 +37,8 @@ describe("DeleteConfirmDlg test", () => {
       id: 100,
       title: "Task 1",
       visible: true,
+      fnTaskDeleteConfirm: jest.fn(),
+      fnTaskDeleteCancel: jest.fn()
     };
 
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
@@ -76,6 +80,8 @@ describe("DeleteConfirmDlg test", () => {
       id: 100,
       title: "Task 1",
       visible: true,
+      fnTaskDeleteConfirm: jest.fn(),
+      fnTaskDeleteCancel: jest.fn()
     };
 
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
@@ -96,16 +102,20 @@ describe("DeleteConfirmDlg test", () => {
       id: 100,
       title: "Task 1",
       visible: true,
+      fnTaskDeleteConfirm: jest.fn(),
+      fnTaskDeleteCancel: jest.fn()
     };
 
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
 
-    expect(wrapper.find(Modal.Footer)).toHaveLength(1); // find by Modal.Footer
+    expect(wrapper.find(Modal.Footer)).toHaveLength(1); // find by Modal_._Footer
     expect(wrapper.find(ModalFooter)).toHaveLength(1); // find by ModalFooter
     expect(dlg.children[2].type).toBe("ModalFooter");
 // test by selector
+    expect(wrapper.find({ id: "ok" })).toHaveLength(1); // find by Modal_._Footer
     expect(wrapper.find({ id: "ok" }).text()).toBe("Да"); // by selector
+    expect(wrapper.find({ id: "cancel" })).toHaveLength(1); // find by Modal_._Footer
     expect(wrapper.find({ id: "cancel" }).text()).toBe("Нет"); // by selector
 
     expect(wrapper.find(Button)).toHaveLength(2);
@@ -116,12 +126,14 @@ describe("DeleteConfirmDlg test", () => {
       id: 100,
       title: "Task 1",
       visible: true,
+      fnTaskDeleteConfirm: jest.fn(),
+      fnTaskDeleteCancel: jest.fn()
     };
 
     const wrapper = shallow(<DeleteConfirmDlg {...task} />);
     const dlg = toJson(wrapper);
 
-    expect(dlg.children[1].type).toBe("ModalBody");
+    expect(dlg.children[1].type).toBe("ModalBody"); // place in dlg. index must be 1. body after header.
 // test by selector
     expect(wrapper.find(Modal.Body)).toHaveLength(1);
     expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?");
