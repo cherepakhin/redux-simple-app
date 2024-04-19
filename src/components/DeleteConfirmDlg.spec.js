@@ -113,4 +113,16 @@ describe("DeleteConfirmDlg test", () => {
     expect(wrapper.find(Button)).toHaveLength(2);
   });
 
+  it("showDeleteConfirmDlg check body", () => {
+    const task = {
+      id: 100,
+      title: "Task 1",
+      visible: true,
+    };
+
+    const wrapper = shallow(<DeleteConfirmDlg {...task} />);
+    const dlg = toJson(wrapper);
+
+    expect(wrapper.find({ id: "body" }).text()).toBe("{id: 100, title: 'Task 1'}?"); // by selector
+    });
 });
