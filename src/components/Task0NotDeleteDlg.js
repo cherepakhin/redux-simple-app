@@ -16,7 +16,7 @@ const Task0NotDeleteDlg = ({visible, fnTask0NotDeleteDlgClose}) => {
         <Modal.Header closeButton>
           <Modal.Title id="header">Внимание!</Modal.Title>
         </Modal.Header>
-        <Modal.Body id="body">"Задачу -1 нельзя удалять."</Modal.Body>
+        <Modal.Body id="body">Задачу -1 нельзя удалять.</Modal.Body>
         <Modal.Footer>
             <Button id="ok" className="col-2" variant="primary" onClick={handleClose}>Закрыть</Button>
         </Modal.Footer>

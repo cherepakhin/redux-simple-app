@@ -33,7 +33,7 @@ describe("<Task0NotDeleteDlg />", () => {
     const wrapper = shallow(<Task0NotDeleteDlg {...props} />);
 
     expect(wrapper.find({ id: "task0NotDeleteDlg" })).toHaveLength(1);
-    expect(wrapper.find({ id: "body" }).text()).toBe("\"Задачу -1 нельзя удалять.\"");
+    expect(wrapper.find({ id: "body" }).text()).toBe("Задачу -1 нельзя удалять.");
   });
 
   it("Task0NotDeleteDlg footer", () => {
