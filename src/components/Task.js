@@ -105,10 +105,10 @@ const Task = ({ task }) => {
         onChange={ () => dispatch(createToggleTaskAction(id)) }
         title="title Form.Check"
       />
-      <div id="idMoreBtn" className="list-group-item-actions" align="left" title="Подробнее о задаче">
+      <div id="idMoreBtn" className="list-group-item-actions" title="Подробнее о задаче">
         <span onClick={() => openMoreDlg(id)}>Подробнее</span>
       </div>
-      <div className="list-group-item-actions" align="center" title="Удалить задачу">
+      <div className="list-group-item-actions" title="Удалить задачу">
         <span onClick={() => openDeleteConfirmDlg(id)}>Удалить</span>
       </div>
     </ListGroup.Item>
