@@ -277,3 +277,17 @@ File sizes after gzip:
 ### Тестирование компонентов
 
 [https://remarkablemark.org/blog/2017/05/17/testing-react-modal/](https://remarkablemark.org/blog/2017/05/17/testing-react-modal/)
+
+### TODO
+
+Вместо __<Form.Check...__ использовать div: 
+
+````shell
+      <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+
+````
+
+[https://www.copycat.dev/blog/bootstrap-checkbox/](https://www.copycat.dev/blog/bootstrap-checkbox/)
