@@ -291,3 +291,70 @@ File sizes after gzip:
 ````
 
 [https://www.copycat.dev/blog/bootstrap-checkbox/](https://www.copycat.dev/blog/bootstrap-checkbox/)
+
+На пример в проекте при использовании __<Form.Check...__ компонент __Form.Check__: 
+
+````shell
+  id={id}
+  type="checkbox"
+  label={id+". "+title}
+  checked={completed}
+  onChange={ () => dispatch(createToggleTaskAction(id)) }
+  title="title Form.Check"
+/>
+````
+
+компилируется в:
+
+````shell
+<div class="form-check">
+  <input type="checkbox" id="-1" class="form-check-input">
+  <label class="form-check-label" title="title Form.Check" for="-1" >-1. позже удалить из показа</label>
+</div>
+````
+
+и где-то в недрах js событие _onChange()_   
+
+Еще пример [https://stackoverflow.com/questions/71891911/onchange-function-not-working-in-react-bootstraps-form-check-component](https://stackoverflow.com/questions/71891911/onchange-function-not-working-in-react-bootstraps-form-check-component):
+
+````shell
+const PaymentPage = () => {
+  const [paymentMethod, setPaymentMethod] = useState("VISA"); // "VISA" по умолчанию
+  const onPaymentMethodChange = ({ target: { value } }) => {
+    setPaymentMethod(value);
+  };
+  return (
+    <>
+      <Form.Group>
+        <Form.Label className="my-3" as="legend">
+          Select Method
+        </Form.Label>
+        <Col>
+          <Form.Check
+            className="my-3"
+            type="radio"
+            label="PayPal or Credit Card"
+            id="PayPal"
+            name="paymentMethod"
+            value="PAYPAL" // в onPaymentMethodChange уходит значение "PAYPAL"
+            checked={paymentMethod === "PAYPAL"} // отмечено, если в state paymentMethod === "PAYPAL" 
+            onChange={onPaymentMethodChange} // в onPaymentMethodChange уходит значение "PAYPAL"( в функцию onChange() уходит объект с полем target??? )    
+          />
+          <Form.Check
+            className="my-3"
+            type="radio"
+            label="Stripe"
+            id="Stripe"
+            name="paymentMethod"
+            value="VISA" // в onPaymentMethodChange уходит значение "VISA"
+            checked={paymentMethod === "VISA"} // отмечено, если в state paymentMethod === "VISA" 
+            onChange={onPaymentMethodChange}
+          />
+        </Col>
+      </Form.Group>
+    </>
+  );
+};
+````
+
+При нажатии Form.Check в метод onChange уходит событие ````{ target: { value } }````.
